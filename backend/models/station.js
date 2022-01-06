@@ -1,7 +1,7 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
 	const Station = sequelize.define("Station", {
-        stationId: {
+        stationID: {
             type: DataTypes.STRING(30),
             validate: {
                 notEmpty: true

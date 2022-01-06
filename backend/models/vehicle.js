@@ -1,26 +1,35 @@
-'use strict';
-const {Model} = require('sequelize');
-
+"use strict";
 module.exports = (sequelize, DataTypes) => {
-    class vehicle extends Model {
-        /**
-         * Helper method for defining associations.
-         * This method is not a part of Sequelize lifecycle.
-         * The `models/index` file will call this method automatically.
-         */
-        static associate(models) {
-            // define association here
+	const Vehicle = sequelize.define("Vehicle", {
+        vehicleID: {
+            type: DataTypes.STRING(30),
+            validate: {
+                notEmpty: true
+            }
+        },
+		tagID: {
+			type: DataTypes.STRING(30),
+			validate: {
+				notEmpty: true
+			}
+		},
+		tagProvider: {
+			type: DataTypes.STRING(30),
+			validate: {
+				notEmpty: true
+			}
+		},
+        providerAbbr: {
+            type: DataTypes.STRING(30),
+            validate: {
+                notEmpty: true
+            }
+        },
+        licenseYear: {
+            type: DataTypes.INTEGER(11),
+            validate: {
+                notEmpty: true
+            }
         }
-    };
-    vehicle.init({
-        vehicleID: DataTypes.STRING,
-        tagID: DataTypes.STRING,
-        tagProvider: DataTypes.STRING,
-        providerAbbr: DataTypes.STRING,
-        licenseYear: DataTypes.INTEGER
-    }, {
-        sequelize,
-        modelName: 'vehicle',
-    });
-    return vehicle;
+	});
 };

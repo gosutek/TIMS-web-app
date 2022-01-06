@@ -23,5 +23,4 @@ async function init() {
         console.log(`Listening on port ${PORT}`);
     })
 }
-
 init();

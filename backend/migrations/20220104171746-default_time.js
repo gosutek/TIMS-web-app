@@ -36,7 +36,7 @@ module.exports = {
             .then(function() {
                 return queryInterface.changeColumn(
                     'Stations',
-                    'updateAt',
+                    'updatedAt',
                     defaulTimeDown
                 )
             })

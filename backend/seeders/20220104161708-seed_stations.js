@@ -6,14 +6,14 @@ const station = require("../models/station");
 
 module.exports = {
 	up: async (queryInterface, Sequelize) => {
-        return readCSV('../data/sampledata01_stations.csv')
+        return readCSV('sampledata01_stations.csv')
             .then(function (stations) {
                 return queryInterface.bulkInsert('Stations', stations)
             })
     },
 
 	down: async (queryInterface, Sequelize) => {
-		return readCSV('../data/sampledata01_stations.csv')
+		return readCSV('sampledata01_stations.csv')
             .then(function (stations) {
                 const mockStationId = stations.map(function (user) {
                     return station.station_id

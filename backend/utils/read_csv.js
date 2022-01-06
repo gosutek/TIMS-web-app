@@ -3,14 +3,14 @@ const csvParse = require("csv-parser");
 const path = require("path");
 const fs = require("fs");
 
-function readCSV(relativeFilePath) {
+function readCSV(csvFilename) {
 	return new Promise(function (resolve, reject) {
 
 		const csv = require("csv-parser");
 		const fs = require("fs");
 		const results = [];
 
-		fs.createReadStream("./data/sampledata01_stations.csv")
+		fs.createReadStream("./data/" + csvFilename)
 			.pipe(csv({ separator: ";" }))
 			.on('data', (data) => results.push(data))
 			.on('end', () => {

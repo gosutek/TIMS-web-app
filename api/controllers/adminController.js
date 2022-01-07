@@ -66,8 +66,25 @@ module.exports = {
             console.log("Unable to reset vehicles ->" + err.stack);
             res.send ({ status: "Failed", error: err.stack });
         }
-    }
-    /*
-    *   resetPasses
-    */
+    },
+    /*resetPasses: async function (req, res) {
+        try {
+            console.log("Destroying Passes...");
+            db.models.Pass.destroy({ where: {}, truncate: true });
+
+            console.log("Syncing Database...");
+            await db.sync();
+
+            console.log("Populating passes...");
+            readCSV(path.join(__dirname, "../../backend/data/sampledata01_passes100_8000.csv"))
+            .then(passes => {
+                db.queryInterface.bulkInsert('Passes', passes);
+            })
+            console.log("Done!");
+            res.send ({ status: "OK" });
+        } catch (err) {
+            console.log("Unable to reset passes ->" + err.stack);
+            res.send ({ stats: "Failed", error: err.stack });
+        }
+    }*/
 };

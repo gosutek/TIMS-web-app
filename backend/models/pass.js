@@ -10,7 +10,7 @@ const Pass = (sequelize) => {
                 }
             },
             timestamp: {
-                type: DataTypes.DATE,
+                type: DataTypes.DATE(6),
                 validate: {
                     notEmpty: true
                 }

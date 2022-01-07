@@ -6,7 +6,11 @@ const sequelize = new Sequelize('tims_test', config.username, config.password, {
     host: config.host,
     port: config.port,
     dialect: config.dialect,
-    logging: false
+    dialectOptions: {
+        timezone: 'local'
+    },
+    timezone: 'Europe/Athens',
+    logging: false,
 }
 );
 

@@ -1,28 +1,43 @@
-'use strict';
-const {Model} = require('sequelize');
+const { DataTypes } = require('sequelize')
 
-module.exports = (sequelize, DataTypes) => {
-    class pass extends Model {
-        /**
-         * Helper method for defining associations.
-         * This method is not a part of Sequelize lifecycle.
-         * The `models/index` file will call this method automatically.
-         */
-        static associate(models) {
-            // define association here
-        }
-    };
-
-    pass.init({
-        passID: DataTypes.STRING,
-        timestamp: DataTypes.DATE,
-        stationRef: DataTypes.STRING,
-        vehicleRef: DataTypes.STRING,
-        charge: DataTypes.FLOAT
-    }, {
-        sequelize,
-        modelName: 'pass',
-    });
-
-    return pass;
+const Pass = (sequelize) => {
+    sequelize.define("Pass", {
+            passID: {
+                type: DataTypes.STRING(30),
+                primaryKey: true,
+                validate: {
+                    notEmpty: true
+                }
+            },
+            timestamp: {
+                type: DataTypes.DATE,
+                validate: {
+                    notEmpty: true
+                }
+            },
+            stationRef: {
+                type: DataTypes.STRING(30),
+                validate: {
+                    notEmpty: true
+                }
+            },
+            vehicleRef: {
+                type: DataTypes.STRING(30),
+                validate: {
+                    notEmpty: true
+                }
+            },
+            charge: {
+                type: DataTypes.DOUBLE,
+                validate: {
+                    notEmpty: true
+                }
+            }
+        },
+        {
+            timestamps: false
+        })
 };
+
+module.exports = Pass;
+

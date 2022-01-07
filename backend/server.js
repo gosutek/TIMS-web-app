@@ -1,8 +1,11 @@
 const Sequelize = require("sequelize");
+const env = process.env.NODE_ENV || "development";
+const config = require(__dirname + "/config/config.json")[env];
 
-const sequelize = new Sequelize('tims_test', 'root', '', {
-    host: "127.0.0.1",
-    dialect: "mysql",
+const sequelize = new Sequelize('tims_test', config.username, config.password, {
+    host: config.host,
+    port: config.port,
+    dialect: config.dialect,
     logging: false
 }
 );

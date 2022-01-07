@@ -9,7 +9,8 @@ const sequelize = new Sequelize('tims_test', 'root', '', {
 
 const modelDefinitions = [
     require("./models/station"),
-    require("./models/vehicle")
+    require("./models/vehicle"),
+    require("./models/pass")
 ];
 
 for (const eachModel of modelDefinitions) {

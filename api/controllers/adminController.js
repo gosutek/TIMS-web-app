@@ -1,6 +1,7 @@
 const env = process.env.NODE_ENV || "development";
 const config = require("../../backend/config/config.json")[env];
 const path = require('path');
+const moment = require('moment');
 
 const db = require("../../backend");
 const readCSV = require("../utils/read_csv");
@@ -54,7 +55,7 @@ module.exports = {
 
             console.log("Syncing Database...");
             await db.sync();
-            
+
             console.log("Populating vehicles...");
             readCSV(path.join(__dirname, "../../backend/data/sampledata01_vehicles_100.csv"))
             .then(vehicles => {
@@ -67,7 +68,7 @@ module.exports = {
             res.send ({ status: "Failed", error: err.stack });
         }
     },
-    /*resetPasses: async function (req, res) {
+    resetPasses: async function (req, res) {
         try {
             console.log("Destroying Passes...");
             db.models.Pass.destroy({ where: {}, truncate: true });
@@ -78,6 +79,7 @@ module.exports = {
             console.log("Populating passes...");
             readCSV(path.join(__dirname, "../../backend/data/sampledata01_passes100_8000.csv"))
             .then(passes => {
+                passes.forEach(pass => pass.timestamp = moment(pass.timestamp, "DD/MM/YYYY HH:mm").format("YYYY-MM-DD HH:mm:ss"))
                 db.queryInterface.bulkInsert('Passes', passes);
             })
             console.log("Done!");
@@ -86,5 +88,5 @@ module.exports = {
             console.log("Unable to reset passes ->" + err.stack);
             res.send ({ stats: "Failed", error: err.stack });
         }
-    }*/
+    }
 };

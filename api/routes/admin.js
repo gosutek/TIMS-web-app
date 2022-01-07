@@ -5,7 +5,7 @@ const adminController = require("../controllers/adminController");
 
 router.get("/healthcheck", adminController.checkDatabaseConnection);
 
-//router.post("/resetpasses", adminController.resetPasses);
+router.post("/resetpasses", adminController.resetPasses);
 
 router.post("/resetstations", adminController.resetStations);
 

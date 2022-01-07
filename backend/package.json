@@ -1,5 +1,5 @@
 {
-	"name": "tims_test",
+	"name": "tims_backend",
 	"version": "1.0.0",
 	"description": "",
 	"main": "server.js",
@@ -9,8 +9,6 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"csv-parser": "^3.0.0",
-		"express": "^4.17.2",
 		"mysql2": "^2.3.3",
 		"sequelize": "^6.12.5"
 	},

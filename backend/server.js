@@ -1,29 +1,21 @@
-const env = process.env.NODE_ENV || "development";
-const config = require(__dirname + "/config/config.json")[env];
+const Sequelize = require("sequelize");
 
-const db = require('./models')
+const sequelize = new Sequelize('tims_test', 'root', '', {
+    host: "127.0.0.1",
+    dialect: "mysql",
+    logging: false
+}
+);
 
-module.exports = {
-	checkDatabaseConnection: async function () {
-		try {
-			await db.sequelize.authenticate();
-			console.log("Succefully connected to database!");
-			return {
-				status: "OK",
-				dbconnection:
-					"username: " +
-					config.username +
-					" | password: " +
-					config.password +
-					" | database_name: " +
-					config.database +
-					" | dialect: " +
-					config.dialect
-			};
-		} catch (err) {
-			console.log("Connection to database failed ->" + err.stack);
-			return { status: "Failed" };
-		}
-	},
-	// add more functions here
-};
+const modelDefinitions = [
+    require("./models/station"),
+    require("./models/vehicle")
+];
+
+for (const eachModel of modelDefinitions) {
+    eachModel(sequelize);
+}
+
+sequelize.sync(); // Create tables from models
+
+module.exports = sequelize;

@@ -1,0 +1,15 @@
+{
+	"name": "tims_test",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"directories": {
+		"doc": "doc"
+	},
+	"scripts": {
+		"start": "npm-run-all --parallel start:server",
+        "start:server": "node api"
+	},
+	"author": "",
+	"license": "ISC"
+}

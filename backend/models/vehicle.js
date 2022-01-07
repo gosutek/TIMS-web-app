@@ -1,8 +1,10 @@
-"use strict";
-module.exports = (sequelize, DataTypes) => {
-	const Vehicle = sequelize.define("Vehicle", {
+const { DataTypes } = require('sequelize')
+
+const Vehicle = (sequelize) => {
+	sequelize.define("Vehicle", {
         vehicleID: {
             type: DataTypes.STRING(30),
+            primaryKey: true,
             validate: {
                 notEmpty: true
             }
@@ -31,5 +33,11 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         }
-	});
+	},
+    {
+        timestamps: false
+    })
 };
+
+module.exports = Vehicle;
+

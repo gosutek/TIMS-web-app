@@ -25,7 +25,7 @@ module.exports = {
 			});
 		} catch (err) {
 			console.log("Connection to database failed ->" + err.stack);
-			res.json ({ status: "Failed", error: err });
+			res.json ({ status: "Failed", error: err.stack });
 		}
 	},
     resetStations: async function(req, res) {

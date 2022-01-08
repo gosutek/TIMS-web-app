@@ -15,7 +15,7 @@ app.get("/", (req,res) => {
 });
 
 const admin = require("./routes/admin");
+const passes = require("./routes/passes");
 
 app.use('/admin', admin);
-
-
+app.use('', passes);

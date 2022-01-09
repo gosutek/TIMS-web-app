@@ -4,18 +4,21 @@ const path = require('path');
 
 
 const PORT = 9103;
+const baseURL = '/interoperability/api';
 
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
 });
 
-app.get("/", (req,res) => {
+app.get(baseURL , (req,res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-const admin = require("./routes/admin");
-const passes = require("./routes/passes");
+const adminRouter = require("./routes/adminRouter");
+const passesPerStation = require("./routes/passesPerStationRouter");
+const passesAnalysis = require("./routes/passesAnalysisRouter");
 
-app.use('/admin', admin);
-app.use('', passes);
+app.use(path.join(baseURL, '/admin'), adminRouter);
+app.use(path.join(baseURL, '/PassesPerStation'), passesPerStation);
+app.use(path.join(baseURL, '/PassesAnalysis'), passesAnalysis);

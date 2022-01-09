@@ -1,5 +1,6 @@
 const db = require("../../backend");
 const moment = require('moment');
+const object2csv = require("../utils/object2csv");
 
 function ResponseObject(Station, StationOperator, RequestTimestamp, PeriodFrom, PeriodTo, NumberOfPasses, PassesList) {
     this.Stations = Station
@@ -56,9 +57,16 @@ module.exports = {
                     pass.vehicleRef, pass.tagProvider, passType, pass.charge)
             })
 
-            res.setHeader('content-type', 'application/json');
-            res.send(JSON.stringify(responseObject))
+            if (req.query.format == 'csv') {
+                res.setHeader('content-type', 'text/csv');
+                res.send(object2csv(responseObject.PassesList))
+            } else {
+                res.setHeader('content-type', 'application/json');
+                res.send(JSON.stringify(responseObject))
+            }
+
         } catch (err) {
+            res.statusCode = 500
             res.json ({ status: "Failed", error: err.stack });
         }
     }

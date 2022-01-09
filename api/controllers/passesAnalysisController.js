@@ -32,6 +32,12 @@ function PassEntry(PassIndex, PassID, StationID, TimeStamp, VehicleID, Charge) {
 module.exports = {
 	getPassesAnalysis: async function (req, res) {
 		try {
+			let dateFromParam = moment(req.params.date_from, "YYYYMMDD").format("YYYY-MM-DD HH:mm:ss")
+			let dateToParam = moment(req.params.date_to, "YYYYMMDD")
+				.add(23,'hours')
+				.add(59,'minutes')
+				.add(59,'seconds').format("YYYY-MM-DD HH:mm:ss")
+
 			const [passesResults, passesMetadata] = await db.query(
 				`SELECT * FROM Passes p, Stations s, Vehicles v 
                  WHERE p.stationRef = s.stationID 
@@ -44,8 +50,8 @@ module.exports = {
 					replacements: {
 						op1_ID: req.params.op1_ID,
 						op2_ID: req.params.op2_ID,
-						dateFrom: req.params.date_from,
-						dateTo: req.params.date_to
+						dateFrom: dateFromParam,
+						dateTo: dateToParam
 					}
 				}
 			);
@@ -60,8 +66,8 @@ module.exports = {
 				req.params.op1_ID,
 				req.params.op2_ID,
 				moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
-				req.params.date_from,
-				req.params.date_to,
+				dateFromParam,
+				dateToParam,
 				passesResults.length,
 				[]
 			);

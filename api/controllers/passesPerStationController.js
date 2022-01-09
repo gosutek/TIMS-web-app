@@ -25,6 +25,12 @@ function PassEntry(PassIndex, PassID, PassTimeStamp, VehicleID, TagProvider, Pas
 module.exports = {
     getPassesPerStation: async function (req, res) {
         try {
+            let dateFromParam = moment(req.params.date_from, "YYYYMMDD").format("YYYY-MM-DD HH:mm:ss")
+            let dateToParam = moment(req.params.date_to, "YYYYMMDD")
+                .add(23,'hours')
+                .add(59,'minutes')
+                .add(59,'seconds').format("YYYY-MM-DD HH:mm:ss")
+
             const [stationResults, stationMetadata] = await db.query(`SELECT * FROM Stations WHERE stationID=:stationID`,
                 {
                     replacements: {
@@ -41,8 +47,8 @@ module.exports = {
                 {
                     replacements: {
                         stationID: req.params.stationID,
-                        dateFrom: req.params.date_from,
-                        dateTo: req.params.date_to
+                        dateFrom: dateFromParam,
+                        dateTo: dateToParam
                     }
                 });
 
@@ -53,7 +59,7 @@ module.exports = {
             }
 
             const responseObject = new ResponseObject(req.params.stationID, stationResults[0].stationProvider, moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
-                req.params.date_from, req.params.date_to, passesResults.length)
+                dateFromParam, dateToParam, passesResults.length)
 
             let count = 0
             responseObject.PassesList =  passesResults.map(pass => {

@@ -41,6 +41,12 @@ module.exports = {
                     }
                 });
 
+            if (passesResults.length == 0) {
+                res.statusCode = 402
+                res.json ({ status: "No Data Found"});
+                return
+            }
+
             const responseObject = new ResponseObject(req.params.op1_ID, req.params.op2_ID, moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
                 req.params.date_from, req.params.date_to, passesResults.length, [])
 
@@ -60,6 +66,7 @@ module.exports = {
             }
 
         } catch (err) {
+            res.statusCode = 500
             res.json ({ status: "Failed", error: err.stack });
         }
     }

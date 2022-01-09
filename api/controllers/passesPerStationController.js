@@ -46,6 +46,12 @@ module.exports = {
                     }
                 });
 
+            if (passesResults.length == 0) {
+                res.statusCode = 402
+                res.json ({ status: "No Data Found"});
+                return
+            }
+
             const responseObject = new ResponseObject(req.params.stationID, stationResults[0].stationProvider, moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
                 req.params.date_from, req.params.date_to, passesResults.length)
 

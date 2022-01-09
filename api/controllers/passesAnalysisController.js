@@ -40,12 +40,12 @@ module.exports = {
 
 			const [passesResults, passesMetadata] = await db.query(
 				`SELECT * FROM Passes p, Stations s, Vehicles v 
-                 WHERE p.stationRef = s.stationID 
-                 AND p.vehicleRef = v.vehicleID
-                 AND s.stationProvider = :op1_ID
-                 AND v.tagProvider = :op2_ID
-                 AND p.timestamp BETWEEN :dateFrom AND :dateTo 
-                 ORDER BY p.timestamp ASC`,
+                WHERE p.stationRef = s.stationID 
+                AND p.vehicleRef = v.vehicleID
+                AND s.stationProvider = :op1_ID
+                AND v.tagProvider = :op2_ID
+                AND p.timestamp BETWEEN :dateFrom AND :dateTo 
+                ORDER BY p.timestamp ASC`,
 				{
 					replacements: {
 						op1_ID: req.params.op1_ID,
@@ -97,6 +97,7 @@ module.exports = {
 		} catch (err) {
 			res.statusCode = 500;
 			res.json({ status: "Failed", error: err.stack });
+            console.log("Error ->" + err.stack);
 		}
 	}
 };

@@ -40,10 +40,10 @@ module.exports = {
 
             const [passesResults, passesMetadata] = await db.query(
                 `SELECT * FROM Passes p, Stations s, Vehicles v WHERE p.stationRef=:stationID 
-                 AND p.stationRef = s.stationID 
-                 AND p.vehicleRef = v.vehicleID 
-                 AND p.timestamp BETWEEN :dateFrom AND :dateTo 
-                 ORDER BY p.timestamp ASC`,
+                AND p.stationRef = s.stationID 
+                AND p.vehicleRef = v.vehicleID 
+                AND p.timestamp BETWEEN :dateFrom AND :dateTo 
+                ORDER BY p.timestamp ASC`,
                 {
                     replacements: {
                         stationID: req.params.stationID,
@@ -80,6 +80,7 @@ module.exports = {
         } catch (err) {
             res.statusCode = 500
             res.json ({ status: "Failed", error: err.stack });
+            console.log("Error ->" + err.stack);
         }
     }
 };

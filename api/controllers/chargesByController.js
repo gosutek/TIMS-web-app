@@ -50,6 +50,7 @@ module.exports = {
 					}
 				}
 			);
+			console.log(passesResults)
 
 			if (passesResults.length == 0) {
 				res.statusCode = 402;
@@ -75,7 +76,7 @@ module.exports = {
 
 			if (req.query.format == "csv") {
 				res.setHeader("content-type", "text/csv");
-				res.send(object2csv(responseObject.PassesList));
+				res.send(object2csv(responseObject.PPOList));
 			} else {
 				res.setHeader("content-type", "application/json");
 				res.send(JSON.stringify(responseObject));

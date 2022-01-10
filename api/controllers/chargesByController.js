@@ -50,7 +50,6 @@ module.exports = {
 					}
 				}
 			);
-			console.log(passesResults)
 
 			if (passesResults.length == 0) {
 				res.statusCode = 402;
@@ -84,7 +83,7 @@ module.exports = {
 		} catch (err) {
 			res.statusCode = 500;
 			res.json({ status: "Failed", error: err.stack });
-            console.log("Error ->" + err.stack);
+            		console.log("Error ->" + err.stack);
 		}
 	}
 };

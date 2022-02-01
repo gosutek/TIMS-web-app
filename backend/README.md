@@ -1,20 +1,9 @@
 # Back-end
 
+TIMS uses a [MySQL8.0](https://www.mysql.com/) database and Sequelize ORM (https://www.npmjs.com/package/sequelize)
+
 ## To Use
 
-1. Create Database "tims_test".
-2. Install dependencies:
-```
-npm install
-```
-3.Migrate db:
-```
-sequelize db:migrate
-```
-4.Populate:
-```
-sequelize db:seed:all
-```
 
 
 Περιεχόμενα:

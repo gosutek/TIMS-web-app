@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"start": "npm-run-all --parallel start:server",
-        "install:dependencies": "cd ./backend/ && npm install && cd ../api && npm install",
+		"install:dependencies": "cd ./backend && npm install && cd ../api && npm install && cd ../frontend && npm install",
 		"start:server": "node api"
 	},
 	"author": "",

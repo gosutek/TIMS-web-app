@@ -1,10 +1,13 @@
 const express = require("express");
 const app = express();
 const path = require('path');
+const cors = require('cors');
 
 
 const PORT = 9103;
 const baseURL = '/interoperability/api';
+
+app.use(cors())
 
 
 app.listen(PORT, () => {

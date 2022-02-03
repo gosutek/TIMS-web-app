@@ -3,8 +3,7 @@ const router = express.Router();
 
 const passesPerStationController = require("../controllers/passesPerStationController");
 
-router.get(
-	"/:stationID/:date_from/:date_to",
+router.get("/:stationID/:date_from/:date_to",
 	passesPerStationController.getPassesPerStation
 );
 

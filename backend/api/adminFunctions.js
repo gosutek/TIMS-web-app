@@ -31,50 +31,23 @@ module.exports = {
 			return ({ status: "Failed", error: err.stack });
 		}
     },
-    resetStations: async function () {
-/*         try {
-            console.log("Destroying Station...");
-            db.models.Station.destroy({ where: {}, truncate: true });
-
-            console.log("Syncing Database...");
-            await db.sync();
-
-            console.log("Populating Station...");
-            readCSV(path.join(__dirname, "../../backend/data/sampledata01_stations.csv"))
-            .then(stations => {
-                db.queryInterface.bulkInsert('Stations', stations);
-            })
-            console.log("Done!");
-            res.send ({ status: "OK" });
-        } catch (err) {
-            console.log("Unable to reset stations ->" + err.stack);
-            res.send ({ status: "Failed", error: err.stack });
-        }
- */    },
-    resetPasses: async function() {
+    resetDatabase: async function () {
         try {
-            console.log("Destroying Passes...");
-            db.models.Pass.destroy({ where: {}, truncate: true });
+            await db.drop();
 
-            console.log("Syncing Database...");
             await db.sync();
 
-            console.log("Populating Passes...");
-            db.queryInterface.bulkInsert("Passes", mockData.passes)
-            console.log("Done!");
-            return({ status: "OK" });
+            await db.queryInterface.bulkInsert("Operators", mockData.operators)
+            await db.queryInterface.bulkInsert("Vehicles", mockData.vehicles)
+            await db.queryInterface.bulkInsert("Stations", mockData.stations)
+            await db.queryInterface.bulkInsert("Tags", mockData.tags)
+            await db.queryInterface.bulkInsert("Passes", mockData.passes)
+
+            return ({status: "OK"})
+
         } catch (err) {
-            console.log("Unable to reset passes ->" + err.stack);
-            return({ stats: "Failed", error: err.stack });
+            console.log("Unable to reset database->" + err.stack)
+            return({status: "Failed", error: err.stack})
         }
-    },
-    resetOperators: async function() {
-
-    },
-    resetTags: async function() {
-
-    },
-    resetVehicles: async function() {
-        
     }
 };

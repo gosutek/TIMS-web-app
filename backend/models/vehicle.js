@@ -20,7 +20,7 @@ const Vehicle = (sequelize) => {
             type: DataTypes.STRING(30)
         },
         vehicleType: {
-            type: DataTypes.STRING(10)
+            type: DataTypes.STRING(100)
         }
 	},
     {

@@ -7,9 +7,8 @@ declare interface SidebarRouteInfo {
 }
 
 export const SIDEBAR_ROUTES: SidebarRouteInfo[] = [
-    { path: '/clients', title: 'Clients',  icon: 'text_snippet'},
-    { path: '/visits-to-services', title: 'Visits To Services',  icon: 'text_snippet'},
-    { path: '/usage', title: 'Usage',  icon: 'text_snippet'},
+  { path: '/settlements', title: 'Settlements',  icon: 'text_snippet'},
+  { path: '/passes', title: 'Passes',  icon: 'text_snippet'}
 ];
 
 @Component({

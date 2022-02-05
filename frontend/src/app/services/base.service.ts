@@ -19,6 +19,13 @@ export class BaseService {
 
     }
 
+    getPasses(operatorA, operatorB, timeRange): Observable<any> {
+        let params = "?operator_a=" + operatorA + "&operator_b=" + operatorB + "&time_range=" + timeRange
+
+        return this.http.get(AppConstants.API_ROOT + '/url1' + params)
+    }
+
+
     getClients(firstName,lastName,idNo): Observable<any> {
         let params = "?first_name=" + firstName + "&last_name=" + lastName + "&id_no=" + idNo
 
@@ -39,7 +46,7 @@ export class BaseService {
 
     getPossibleInfections(nfcId,firstName,lastName,idNo): Observable<any> {
         let params = "?nfc_id=" + nfcId + "&first_name=" + firstName + "&last_name=" + lastName + "&id_no=" + idNo
-        
+
         return this.http.get(AppConstants.API_ROOT + '/possible-infections.php' + params)
     }
 

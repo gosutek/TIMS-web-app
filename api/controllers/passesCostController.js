@@ -43,13 +43,19 @@ module.exports = {
 				.format("YYYY-MM-DD HH:mm:ss");
 
 			const [passesResults, passesMetadata] = await db.query(
-				`SELECT SUM(p.charge) AS totalCost FROM Passes p, Stations s, Vehicles v 
-                WHERE p.stationRef = s.stationID 
-                AND p.vehicleRef = v.vehicleID
-                AND s.stationProvider = :op1_ID
-                AND v.tagProvider = :op2_ID
-                AND p.timestamp BETWEEN :dateFrom AND :dateTo 
-                ORDER BY p.timestamp ASC`,
+				`SELECT SUM(p.charge) as totalCost
+				 FROM Passes p,
+					  Stations s,
+					  Vehicles v,
+					  Tags t
+				 WHERE p.StationId = s.id
+				   AND p.VehicleId = v.id
+				   AND t.VehicleId = v.id
+				   AND s.OperatorId = :op1_ID
+				   AND t.OperatorId = :op2_ID
+				   AND p.timestamp BETWEEN :dateFrom AND :dateTo
+				 ORDER BY p.timestamp ASC
+				`,
 				{
 					replacements: {
 						op1_ID: req.params.op1_ID,

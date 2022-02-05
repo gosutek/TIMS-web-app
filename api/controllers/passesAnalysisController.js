@@ -51,13 +51,23 @@ module.exports = {
 				.format("YYYY-MM-DD HH:mm:ss");
 
 			const [passesResults, passesMetadata] = await db.query(
-				`SELECT * FROM Passes p, Stations s, Vehicles v 
-                WHERE p.stationRef = s.stationID 
-                AND p.vehicleRef = v.vehicleID
-                AND s.stationProvider = :op1_ID
-                AND v.tagProvider = :op2_ID
-                AND p.timestamp BETWEEN :dateFrom AND :dateTo 
-                ORDER BY p.timestamp ASC`,
+				`SELECT p.id        as passId,
+						p.charge    as charge,
+						p.timestamp as passTimestamp,
+						p.vehicleId as vehicleId,
+						s.id        as StationId 
+				 FROM Passes p,
+					  Stations s,
+					  Vehicles v,
+					  Tags t 
+				 WHERE p.StationId = s.id 
+				   AND p.VehicleId = v.id 
+				   AND t.VehicleId = v.id 
+				   AND s.OperatorId = :op1_ID 
+				   AND t.OperatorId = :op2_ID 
+				   AND p.timestamp BETWEEN :dateFrom AND :dateTo
+				 ORDER BY passTimestamp ASC
+				`,
 				{
 					replacements: {
 						op1_ID: req.params.op1_ID,
@@ -89,12 +99,12 @@ module.exports = {
 				count = count + 1;
 				return new PassEntry(
 					count,
-					pass.passID,
-					pass.stationID,
-					(pass.timestamp = moment(pass.timestamp).format(
+					pass.passId,
+					pass.stationId,
+					(pass.passTimestamp = moment(pass.passTimestamp).format(
 						"YYYY-MM-DD HH:mm:ss"
 					)),
-					pass.vehicleRef,
+					pass.vehicleId,
 					pass.charge
 				);
 			});

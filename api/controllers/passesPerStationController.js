@@ -12,7 +12,7 @@ function ResponseObject(
 	NumberOfPasses,
 	PassesList
 ) {
-	this.Stations = Station;
+	this.Station = Station;
 	this.StationOperator = StationOperator;
 	this.RequestTimestamp = RequestTimestamp;
 	this.PeriodFrom = PeriodFrom;
@@ -59,21 +59,23 @@ module.exports = {
 				.add(59, "seconds")
 				.format("YYYY-MM-DD HH:mm:ss");
 
-			const [stationResults, stationMetadata] = await db.query(
-				`SELECT * FROM Stations WHERE stationID=:stationID`,
-				{
-					replacements: {
-						stationID: req.params.stationID
-					}
-				}
-			);
-
 			const [passesResults, passesMetadata] = await db.query(
-				`SELECT * FROM Passes p, Stations s, Vehicles v WHERE p.stationRef=:stationID 
-                AND p.stationRef = s.stationID 
-                AND p.vehicleRef = v.vehicleID 
-                AND p.timestamp BETWEEN :dateFrom AND :dateTo 
-                ORDER BY p.timestamp ASC`,
+				`
+					SELECT p.id         as passId,
+						   p.charge     as charge,
+						   p.timestamp  as passTimestamp,
+						   p.vehicleId  as vehicleId,
+						   s.id         as StationId,
+						   s.OperatorId as stationOperator,
+						   t.OperatorId as tagOperator
+					FROM Passes p, Stations s, Vehicles v, Tags t 
+					WHERE p.StationId = :stationID
+					  AND p.StationId = s.id
+					  AND p.VehicleId = v.id
+					  AND t.VehicleId = v.id
+					  AND p.timestamp BETWEEN :dateFrom AND :dateTo
+					ORDER BY passTimestamp ASC
+				`,
 				{
 					replacements: {
 						stationID: req.params.stationID,
@@ -91,7 +93,7 @@ module.exports = {
 
 			const responseObject = new ResponseObject(
 				req.params.stationID,
-				stationResults[0].stationProvider,
+				passesResults[0].stationOperator,
 				moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
 				dateFromParam,
 				dateToParam,
@@ -102,17 +104,17 @@ module.exports = {
 			responseObject.PassesList = passesResults.map((pass) => {
 				count = count + 1;
 				let passType =
-					pass.tagProvider == stationResults[0].stationProvider
+					pass.stationOperator == pass.tagOperator
 						? "home"
 						: "visitor";
 				return new PassEntry(
 					count,
-					pass.passID,
-					(pass.timestamp = moment(pass.timestamp).format(
+					pass.passId,
+					(pass.passTimestamp = moment(pass.passTimestamp).format(
 						"YYYY-MM-DD HH:mm:ss"
 					)),
-					pass.vehicleRef,
-					pass.tagProvider,
+					pass.vehicleId,
+					pass.tagOperator,
 					passType,
 					pass.charge
 				);
@@ -120,7 +122,12 @@ module.exports = {
 
 			if (req.query.format == "csv") {
 				res.setHeader("content-type", "text/csv");
-				res.send(object2csv(responseObject.PassesList));
+				let constantValues = JSON.parse(JSON.stringify(responseObject))
+				delete constantValues.PassesList
+				let objectForCsv = responseObject.PassesList.map(passEntry => {
+					return {...constantValues, ...passEntry}
+				})
+				res.send(object2csv(objectForCsv));
 			} else {
 				res.setHeader("content-type", "application/json");
 				res.send(JSON.stringify(responseObject));

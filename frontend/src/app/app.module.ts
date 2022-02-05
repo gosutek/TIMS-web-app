@@ -13,14 +13,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BaseService } from './services/base.service';
 import { CommonModule } from '@angular/common';
-import { SettlementComponent } from './pages/settlement/settlement.component';
+import { SettlementsComponent } from './pages/settlements/settlements.component';
 import { PassesComponent } from './pages/passes/passes.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         DashboardComponent,
-        SettlementComponent,
+        SettlementsComponent,
         PassesComponent
     ],
     imports: [

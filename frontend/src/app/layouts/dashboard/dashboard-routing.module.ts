@@ -6,26 +6,28 @@ import { ClientsComponent } from 'src/app/pages/clients/clients.component';
 import { PossibleInfectionsComponent } from 'src/app/pages/clients/possible-infections/possible-infections.component';
 import { ServicesComponent } from 'src/app/pages/services/services.component';
 import { UsageComponent } from 'src/app/pages/usage/usage.component';
+import {SettlementsComponent} from "../../pages/settlements/settlements.component";
+import {PassesComponent} from "../../pages/passes/passes.component";
 
 const routes: Routes = [
-    { path: 'clients',
-      children: [
-          {
-              path: '',
-              component: ClientsComponent
-          },
-          {
-              path: 'client-visits',
-              component: ClientVisitsComponent
-          },
-          {
-              path: 'possible-infections',
-              component: PossibleInfectionsComponent
-          },
-    ]},
-    { path: 'usage',  component: UsageComponent },
-    { path: 'visits-to-services',  component: ServicesComponent },
-    { path: '**', redirectTo: 'clients', pathMatch: 'full' }
+    // { path: 'clients',
+    //   children: [
+    //       {
+    //           path: '',
+    //           component: ClientsComponent
+    //       },
+    //       {
+    //           path: 'client-visits',
+    //           component: ClientVisitsComponent
+    //       },
+    //       {
+    //           path: 'possible-infections',
+    //           component: PossibleInfectionsComponent
+    //       },
+    // ]},
+  { path: 'settlements',  component: SettlementsComponent },
+  { path: 'passes',  component: PassesComponent },
+  { path: '**', redirectTo: 'settlements', pathMatch: 'full' }
 ];
 
 @NgModule({

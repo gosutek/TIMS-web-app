@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize')
 
 const Pass = (sequelize) => {
     sequelize.define("Pass", {
-            passID: {
+            id: {
                 type: DataTypes.STRING(30),
                 primaryKey: true,
                 validate: {
@@ -15,24 +15,9 @@ const Pass = (sequelize) => {
                     notEmpty: true
                 }
             },
-            stationRef: {
-                type: DataTypes.STRING(30),
-                validate: {
-                    notEmpty: true
-                }
-            },
-            vehicleRef: {
-                type: DataTypes.STRING(30),
-                validate: {
-                    notEmpty: true
-                }
-            },
             charge: {
-                type: DataTypes.DOUBLE,
-                validate: {
-                    notEmpty: true
-                }
-            }
+                type: DataTypes.DOUBLE()
+            },
         },
         {
             timestamps: false

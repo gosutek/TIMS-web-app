@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
-const Station = async (sequelize) => {
-    sequelize.define("Station", {
+const Operator = async (sequelize) => {
+    sequelize.define("Operator", {
         id: {
             type: DataTypes.STRING(30),
             primaryKey: true,
@@ -9,14 +9,16 @@ const Station = async (sequelize) => {
                 notEmpty: true
             }
         },
-		stationName: {
+		operatorName: {
             type: DataTypes.STRING(30)
 		},
-        
+        iban: {
+            type: DataTypes.STRING(34)
+        },
 	},
     {
         timestamps: false
     })
 };
 
-module.exports = Station;
+module.exports = Operator;

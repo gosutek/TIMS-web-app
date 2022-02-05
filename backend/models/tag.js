@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
-const Station = async (sequelize) => {
-    sequelize.define("Station", {
+const Tag = async (sequelize) => {
+    sequelize.define("Tag", {
         id: {
             type: DataTypes.STRING(30),
             primaryKey: true,
@@ -9,15 +9,13 @@ const Station = async (sequelize) => {
                 notEmpty: true
             }
         },
-		stationName: {
-            type: DataTypes.STRING(30),
-            unique: true
-		},
-        
+        credits: {
+            type: DataTypes.DOUBLE(),
+        },
 	},
     {
         timestamps: false
     })
 };
 
-module.exports = Station;
+module.exports = Tag;

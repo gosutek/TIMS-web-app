@@ -1,0 +1,72 @@
+[
+	{
+		"id": "44q7663Q70M2w65",
+		"timestamp": "2003-01-30 21:26:31",
+		"charge": 8.41,
+		"stationID": "7b18827v0VvY8rl",
+		"vehicleID": "CW117l6DCp9629d"
+	},
+	{
+		"id": "qbv86F8v8Y472S5",
+		"timestamp": "2002-03-06 05:09:05",
+		"charge": 19.09,
+		"stationID": "7cvJ935A5oWAC8T",
+		"vehicleID": "hQDE82r29YOXvBP"
+	},
+	{
+		"id": "Bs011828cVfYGKV",
+		"timestamp": "2009-10-07 23:54:41",
+		"charge": 17.99,
+		"stationID": "0kA1Q5218XzsdcI",
+		"vehicleID": "i4p6000lF1w5x56"
+	},
+	{
+		"id": "u71829c357nW1r2",
+		"timestamp": "2000-09-17 09:36:30",
+		"charge": 11.29,
+		"stationID": "t0F86hB8N142uJT",
+		"vehicleID": "CW117l6DCp9629d"
+	},
+	{
+		"id": "6Uh3V7D178Vtgm1",
+		"timestamp": "2001-03-24 00:12:39",
+		"charge": 7.09,
+		"stationID": "t0F86hB8N142uJT",
+		"vehicleID": "hQDE82r29YOXvBP"
+	},
+	{
+		"id": "aIM0N8355qA31F2",
+		"timestamp": "2005-11-06 20:46:00",
+		"charge": 18.17,
+		"stationID": "0kA1Q5218XzsdcI",
+		"vehicleID": "hQDE82r29YOXvBP"
+	},
+	{
+		"id": "LZu7n8W41X6y833",
+		"timestamp": "2021-07-26 23:38:14",
+		"charge": 8.0,
+		"stationID": "1636R51KbWfl44O",
+		"vehicleID": "i6i4L8H990s0TW2"
+	},
+	{
+		"id": "892B792GDTRi709",
+		"timestamp": "2002-03-12 03:54:42",
+		"charge": 2.0,
+		"stationID": "568Q6uP17hwd258",
+		"vehicleID": "7av3bj45i69Y43V"
+	},
+	{
+		"id": "cg8R578Axh5Y7K9",
+		"timestamp": "2001-04-30 11:57:08",
+		"charge": 13.63,
+		"stationID": "b0eB0N1y915Y2xr",
+		"vehicleID": "CW117l6DCp9629d"
+	},
+	{
+		"id": "7rZv28688qD2B33",
+		"timestamp": "2006-06-08 17:54:06",
+		"charge": 18.83,
+		"stationID": "4u7a1GhQ75k9JFU",
+		"vehicleID": "G95zM953uOo16ju"
+	}
+]

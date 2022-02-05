@@ -1,0 +1,72 @@
+[
+	{
+		"id": "yd54176aA96j54M",
+		"licenseYear": "2019",
+		"licensePlate": "TXA-087",
+		"licenseCountry": "BG",
+		"vehicleType": "Light truck"
+	},
+	{
+		"id": "7av3bj45i69Y43V",
+		"licenseYear": "2006",
+		"licensePlate": "QNF-886",
+		"licenseCountry": "IT",
+		"vehicleType": "Car"
+	},
+	{
+		"id": "4GhzD275uu5w98n",
+		"licenseYear": "2019",
+		"licensePlate": "WRM-749",
+		"licenseCountry": "EE",
+		"vehicleType": "Heavy Truck"
+	},
+	{
+		"id": "i6i4L8H990s0TW2",
+		"licenseYear": "2012",
+		"licensePlate": "GTR-877",
+		"licenseCountry": "CZ",
+		"vehicleType": "Light truck"
+	},
+	{
+		"id": "bWm0592Ok8186S5",
+		"licenseYear": "2011",
+		"licensePlate": "QXQ-734",
+		"licenseCountry": "SE",
+		"vehicleType": "Bus"
+	},
+	{
+		"id": "G95zM953uOo16ju",
+		"licenseYear": "2007",
+		"licensePlate": "JXC-625",
+		"licenseCountry": "DK",
+		"vehicleType": "Bus"
+	},
+	{
+		"id": "CW117l6DCp9629d",
+		"licenseYear": "2007",
+		"licensePlate": "XPM-320",
+		"licenseCountry": "HR",
+		"vehicleType": "Bus"
+	},
+	{
+		"id": "8G33637aodNn3iy",
+		"licenseYear": "2017",
+		"licensePlate": "HVK-561",
+		"licenseCountry": "BG",
+		"vehicleType": "Bus"
+	},
+	{
+		"id": "i4p6000lF1w5x56",
+		"licenseYear": "2007",
+		"licensePlate": "TXM-789",
+		"licenseCountry": "CZ",
+		"vehicleType": "Heavy Truck"
+	},
+	{
+		"id": "hQDE82r29YOXvBP",
+		"licenseYear": "2012",
+		"licensePlate": "TTS-950",
+		"licenseCountry": "DK",
+		"vehicleType": "Light truck"
+	}
+]

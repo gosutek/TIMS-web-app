@@ -2,36 +2,25 @@ const { DataTypes } = require('sequelize')
 
 const Vehicle = (sequelize) => {
 	sequelize.define("Vehicle", {
-        vehicleID: {
+        id: {
             type: DataTypes.STRING(30),
             primaryKey: true,
             validate: {
                 notEmpty: true
             }
         },
-		tagID: {
-			type: DataTypes.STRING(30),
-			validate: {
-				notEmpty: true
-			}
-		},
-		tagProvider: {
-			type: DataTypes.STRING(30),
-			validate: {
-				notEmpty: true
-			}
-		},
-        providerAbbr: {
-            type: DataTypes.STRING(30),
-            validate: {
-                notEmpty: true
-            }
-        },
         licenseYear: {
-            type: DataTypes.INTEGER(11),
-            validate: {
-                notEmpty: true
-            }
+            type: DataTypes.INTEGER(11)
+        },
+        licensePlate: {
+            type: DataTypes.STRING(15),
+            unique: true
+        },
+        licenseCountry: {
+            type: DataTypes.STRING(30)
+        },
+        vehicleType: {
+            type: DataTypes.STRING(100)
         }
 	},
     {

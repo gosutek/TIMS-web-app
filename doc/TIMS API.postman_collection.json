@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "b760a7bd-b7c9-492f-b3c1-c4379206d9ec",
-		"name": "Tims Api",
+		"name": "TIMS API",
 		"description": "The **Tims REST API** helps manage the interoperability of toll stations\n\n* * *\n\n# Admin Endpoints",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -12,15 +12,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9103/interoperability/api/admin/healthcheck",
-					"protocol": "http",
+					"raw": "{{baseURL}}/admin/healthcheck",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "9103",
 					"path": [
-						"interoperability",
-						"api",
 						"admin",
 						"healthcheck"
 					]
@@ -30,102 +26,63 @@
 			"response": []
 		},
 		{
-			"name": "Reset Stations",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:9103/interoperability/api/admin/resetstations",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9103",
-					"path": [
-						"interoperability",
-						"api",
-						"admin",
-						"resetstations"
-					]
-				},
-				"description": "Initialize Stations Table of the database with mock up data."
-			},
-			"response": []
-		},
-		{
-			"name": "Reset Vehicles",
+			"name": "Reset Database",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9103/interoperability/api/admin/resetvehicles",
-					"protocol": "http",
+					"raw": "{{baseURL}}/admin/resetdatabase",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "9103",
 					"path": [
-						"interoperability",
-						"api",
 						"admin",
-						"resetvehicles"
+						"resetdatabase"
 					]
-				},
-				"description": "Initialize Vehicles Table of the database with mock up data."
-			},
-			"response": []
-		},
-		{
-			"name": "Reset Passes",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9103/interoperability/api/admin/resetpasses",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9103",
-					"path": [
-						"interoperability",
-						"api",
-						"admin",
-						"resetpasses"
-					]
-				},
-				"description": "Initialize Passes Table of the database with mock up data.\n\n* * *\n\n# Functional Endpoints\n\n*The date parameters must follow the format YYYYMMDD.*"
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Passes Per Station",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9103/interoperability/api/PassesPerStation/:stationID/:date_from/:date_to",
-					"protocol": "http",
+					"raw": "{{baseURL}}/PassesPerStation/:stationID/:date_from/:date_to?format=json",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "9103",
 					"path": [
-						"interoperability",
-						"api",
 						"PassesPerStation",
 						":stationID",
 						":date_from",
 						":date_to"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json"
+						},
+						{
+							"key": "format",
+							"value": "csv",
+							"disabled": true
+						}
 					],
 					"variable": [
 						{
@@ -134,7 +91,7 @@
 						},
 						{
 							"key": "date_from",
-							"value": "20200514"
+							"value": "20200101"
 						},
 						{
 							"key": "date_to",
@@ -159,20 +116,27 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:9103/interoperability/api/PassesAnalysis/:op1_ID/:op2_ID/:date_from/:date_to",
-					"protocol": "http",
+					"raw": "{{baseURL}}/PassesAnalysis/:op1_ID/:op2_ID/:date_from/:date_to?format=json",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "9103",
 					"path": [
-						"interoperability",
-						"api",
 						"PassesAnalysis",
 						":op1_ID",
 						":op2_ID",
 						":date_from",
 						":date_to"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json"
+						},
+						{
+							"key": "format",
+							"value": "csv",
+							"disabled": true
+						}
 					],
 					"variable": [
 						{
@@ -189,7 +153,7 @@
 						},
 						{
 							"key": "date_to",
-							"value": "20211010"
+							"value": "20210101"
 						}
 					]
 				},
@@ -203,7 +167,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9103/interoperability/api/PassesCost/:op1_ID/:op2_ID/:date_from/:date_to",
+					"raw": "http://localhost:9103/interoperability/api/PassesCost/:op1_ID/:op2_ID/:date_from/:date_to?format=json",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -217,6 +181,17 @@
 						":op2_ID",
 						":date_from",
 						":date_to"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json"
+						},
+						{
+							"key": "format",
+							"value": "csv",
+							"disabled": true
+						}
 					],
 					"variable": [
 						{
@@ -247,19 +222,26 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9103/interoperability/api/ChargesBy/:op_ID/:date_from/:date_to",
-					"protocol": "http",
+					"raw": "{{baseURL}}/ChargesBy/:op_ID/:date_from/:date_to?format=json",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "9103",
 					"path": [
-						"interoperability",
-						"api",
 						"ChargesBy",
 						":op_ID",
 						":date_from",
 						":date_to"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json"
+						},
+						{
+							"key": "format",
+							"value": "csv",
+							"disabled": true
+						}
 					],
 					"variable": [
 						{
@@ -279,6 +261,32 @@
 				"description": "Returns the number of pass events performed through stations of **op_ID** by vehicles with tags belonging to **every other station operator** along with their charge.\n\n###### Response Format\n\n| **Field** | **Type** | **Description** |\n| --- | --- | --- |\n| op_ID | String | Operator of the station. |\n| RequestTimestamp | String | Date/Time of the request |\n| PeriodFrom | String | Requested period (from) |\n| PeriodTo | String | Requested period (to) |\n| PPOList: | List | Contains as many elements as the number of distinct operators whose tags performed a pass event through op_ID's station. |\n| \\->VisitingOperator | String | Unique ID of the visiting operator |\n| \\->NumberOfPasses | Integer | Number of pass events |\n| \\->PassesCost | Float | Sum of the charges of pass events performed by the visiting operator through op_ID's station |"
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:9103/interoperability/api"
 		}
 	]
 }

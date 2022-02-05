@@ -13,11 +13,15 @@ const Vehicle = (sequelize) => {
             type: DataTypes.INTEGER(11)
         },
         licensePlate: {
-            type: DataTypes.STRING(8)
+            type: DataTypes.STRING(15),
+            unique: true
         },
         licenseCountry: {
             type: DataTypes.STRING(30)
         },
+        vehicleType: {
+            type: DataTypes.STRING(10)
+        }
 	},
     {
         timestamps: false

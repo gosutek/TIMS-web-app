@@ -10,7 +10,8 @@ const Station = async (sequelize) => {
             }
         },
 		stationName: {
-            type: DataTypes.STRING(30)
+            type: DataTypes.STRING(30),
+            unique: true
 		},
         
 	},

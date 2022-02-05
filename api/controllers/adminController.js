@@ -1,92 +1,22 @@
-const env = process.env.NODE_ENV || "development";
-const config = require("../../backend/config/config.json")[env];
-const path = require('path');
-const moment = require('moment');
-
-const db = require("../../backend");
-const readCSV = require("../utils/read_csv");
+const admin = require("../../backend/api/adminFunctions");
 
 module.exports = {
-	checkDatabaseConnection: async function (req, res) {
-		try {
-			await db.authenticate();
-			console.log("Succefully connected to database!");
-			res.json ({
-				status: "OK",
-				dbconnection:
-					"username: " +
-					config.username +
-					" | password: " +
-					config.password +
-					" | database_name: " +
-					config.database +
-					" | dialect: " +
-					config.dialect
-			});
-		} catch (err) {
-			console.log("Connection to database failed ->" + err.stack);
-			res.json ({ status: "Failed", error: err.stack });
-		}
+	checkDatabaseConnection: (req, res) => {
+		admin.validateDBConnection().then(json => res.send(json))
 	},
-    resetStations: async function(req, res) {
-        try {
-            console.log("Destroying Station...");
-            db.models.Station.destroy({ where: {}, truncate: true });
-
-            console.log("Syncing Database...");
-            await db.sync();
-
-            console.log("Populating Station...");
-            readCSV(path.join(__dirname, "../../backend/data/sampledata01_stations.csv"))
-            .then(stations => {
-                db.queryInterface.bulkInsert('Stations', stations);
-            })
-            console.log("Done!");
-            res.send ({ status: "OK" });
-        } catch (err) {
-            console.log("Unable to reset stations ->" + err.stack);
-            res.send ({ status: "Failed", error: err.stack });
-        }
+	resetStations: async function (req, res) {
+		//admin.resetStations().then(json => res.send(json))
+	},
+	resetVehicles: async function (req, res) {
+		//admin.resetVehicles().then(json => res.send(json))
+	},
+	resetPasses: (req, res) => {
+		admin.resetPasses().then(json => res.send(json))
+	},
+    resetOperators: (req, res) => {
+        //admin.resetOperators().then(json => res.send(json))
     },
-    resetVehicles: async function(req, res) {
-        try {
-            console.log("Destroying Vehicle...");
-            db.models.Vehicle.destroy({ where: {}, truncate: true });
-
-            console.log("Syncing Database...");
-            await db.sync();
-
-            console.log("Populating vehicles...");
-            readCSV(path.join(__dirname, "../../backend/data/sampledata01_vehicles_100.csv"))
-            .then(vehicles => {
-                db.queryInterface.bulkInsert('Vehicles', vehicles);
-            })
-            console.log("Done!");
-            res.send ({status: "OK"});
-        } catch (err) {
-            console.log("Unable to reset vehicles ->" + err.stack);
-            res.send ({ status: "Failed", error: err.stack });
-        }
-    },
-    resetPasses: async function (req, res) {
-        try {
-            console.log("Destroying Passes...");
-            db.models.Pass.destroy({ where: {}, truncate: true });
-
-            console.log("Syncing Database...");
-            await db.sync();
-
-            console.log("Populating passes...");
-            readCSV(path.join(__dirname, "../../backend/data/sampledata01_passes100_8000.csv"))
-            .then(passes => {
-                passes.forEach(pass => pass.timestamp = moment(pass.timestamp, "DD/MM/YYYY HH:mm").format("YYYY-MM-DD HH:mm:ss"))
-                db.queryInterface.bulkInsert('Passes', passes);
-            })
-            console.log("Done!");
-            res.send ({ status: "OK" });
-        } catch (err) {
-            console.log("Unable to reset passes ->" + err.stack);
-            res.send ({ stats: "Failed", error: err.stack });
-        }
+    resetTags: (req, res) => {
+        //admin.resetTags().then(json => res.send(json))
     }
 };

@@ -12,18 +12,18 @@ box = [string.ascii_letters, string.digits]
 passes = [dict() for _ in range(DATA_SIZE)]
 
 def generate_timestamp():
-    timestamp = ""
+    seconds = round(random.uniform(0, 59), 2)
+    minutes = random.randint(0, 59)
+    hours = random.randint(0, 23)
     day = random.randint(1, 30)
     month = random.randint(1, 12)
-    timestamp = timestamp + str(random.choice(years))
-    if (month < 10):
-        timestamp = timestamp + "0" + str(month)
-    else:
-        timestamp = timestamp + str(month)
-    if (day < 10):
-        timestamp = timestamp + "0" + str(day)
-    else:
-        timestamp = timestamp + str(day)
+    timestamp = str(random.choice(years)) + "-"
+    timestamp = timestamp + "0" + str(month) + "-" if (month < 10) else  timestamp + str(month) + "-"
+    timestamp = timestamp + "0" + str(day) + " " if (day < 10) else timestamp + str(day) + " "
+    timestamp = timestamp + "0" + str(hours) + ":" if (hours < 10) else timestamp + str(hours) + ":"
+    timestamp = timestamp + "0" + str(minutes) + ":" if (minutes < 10) else timestamp + str(minutes) + ":"
+    timestamp = timestamp + "0" + str(seconds) if (seconds < 10) else timestamp + str(seconds)
+
     return timestamp
 
 def generate_id():

@@ -16,7 +16,6 @@ app.get(baseURL, (req, res) => {
 	res.sendFile(path.join(__dirname + "/index.html"));
 });
 
-
 const adminRouter = require("./routes/adminRouter");
 const passesPerStation = require("./routes/passesPerStationRouter");
 const passesAnalysis = require("./routes/passesAnalysisRouter");

@@ -1,1 +1,52 @@
-[{"id": "5Nvb883s353zhCy", "timestamp": "20080912", "charge": 17.7}, {"id": "oU03UR86EwWZ1s3", "timestamp": "20110324", "charge": 15.45}, {"id": "H33ef3s8u2n3455", "timestamp": "20201116", "charge": 19.95}, {"id": "2pq7U4Z96M0sKdt", "timestamp": "20080507", "charge": 7.35}, {"id": "843by2lM36qcw1E", "timestamp": "20020626", "charge": 4.5}, {"id": "Z2705vOIBTDv9r2", "timestamp": "20190430", "charge": 14.9}, {"id": "6C1P06mt6395311", "timestamp": "20140414", "charge": 4.33}, {"id": "hF22vcR4i07gPDv", "timestamp": "20101226", "charge": 5.61}, {"id": "N429S06HP8oV32d", "timestamp": "20130422", "charge": 10.22}, {"id": "94qFz8B625K982R", "timestamp": "20000225", "charge": 12.1}]
+[
+	{
+		"id": "LS95Ri222YH0s97",
+		"timestamp": "2016-12-26 08:03:58.96",
+		"charge": 7.04
+	},
+	{
+		"id": "3Ddc4vZNZGEHm0y",
+		"timestamp": "2000-02-06 09:05:16.98",
+		"charge": 16.12
+	},
+	{
+		"id": "Rr3N15nuwO7173Y",
+		"timestamp": "2015-09-23 00:19:28.42",
+		"charge": 15.66
+	},
+	{
+		"id": "Ib6Lq4wZ036v1qf",
+		"timestamp": "2016-05-19 00:25:29.68",
+		"charge": 3.9
+	},
+	{
+		"id": "e483855ICJ9596U",
+		"timestamp": "2017-04-15 14:22:33.75",
+		"charge": 13.07
+	},
+	{
+		"id": "T0Fie7606QT85V6",
+		"timestamp": "2007-12-10 09:05:38.72",
+		"charge": 12.8
+	},
+	{
+		"id": "0nK0H7220NKi1QZ",
+		"timestamp": "2008-06-22 17:25:06.8",
+		"charge": 18.46
+	},
+	{
+		"id": "QRl4e1OXRU8f2V2",
+		"timestamp": "2009-12-12 07:21:21.91",
+		"charge": 7.24
+	},
+	{
+		"id": "Y2xv94J16y8wobC",
+		"timestamp": "2001-02-20 17:15:44.3",
+		"charge": 18.0
+	},
+	{
+		"id": "55D4896v7087976",
+		"timestamp": "2000-03-07 02:18:21.29",
+		"charge": 19.35
+	}
+]

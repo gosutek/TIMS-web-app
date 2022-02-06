@@ -8,7 +8,6 @@ import { ComponentsModule } from './components/components.module';
 import { MaterialModule } from './config/modules/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BaseService } from './services/base.service';
@@ -29,7 +28,6 @@ import { PassesComponent } from './pages/passes/passes.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        HttpModule,
         HttpClientModule,
         ComponentsModule,
         RouterModule,

@@ -43,3 +43,5 @@ Thumbs.db
 
 # Vs Code History Files
 /.history/*
+
+.angular/

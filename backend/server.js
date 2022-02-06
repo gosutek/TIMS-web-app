@@ -28,7 +28,7 @@ db.models.Operator.hasMany(db.models.Station); //Operators can own many stations
 db.models.Operator.hasMany(db.models.Tag); //Operators own many tags (1:N)
 db.models.Vehicle.hasMany(db.models.Tag); //A vehicle could have many tags (1:N)
 db.models.Station.hasMany(db.models.Pass); //An operators tag can have many passes (1:N)
-db.models.Vehicle.hasMany(db.models.Pass); //A station can have many passes (1:N)
+db.models.Tag.hasMany(db.models.Pass); //A tag can have many passes (1:N)
 
 db.sync(); // Create tables from models
 module.exports = db;

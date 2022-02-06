@@ -53,7 +53,7 @@ def generate_passes():
         passes[i]["timestamp"] = timestamp
         passes[i]["charge"] = charge
         passes[i]["stationID"] = random.choice(station_ids)
-        passes[i]["vehicleID"] = random.choice(vehicles)["id"]
+        passes[i]["tagID"] = random.choice(tags)["id"]
 
 def generate_tags():
     for i in range(DATA_SIZE):

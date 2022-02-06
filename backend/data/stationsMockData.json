@@ -1,12 +1,1 @@
-[
-	{ "id": "10G6m6T363o37sL", "operatorID": "NLLG", "stationName": "O727" },
-	{ "id": "4u7a1GhQ75k9JFU", "operatorID": "SXNF", "stationName": "B249" },
-	{ "id": "0kA1Q5218XzsdcI", "operatorID": "WV7J", "stationName": "N536" },
-	{ "id": "568Q6uP17hwd258", "operatorID": "SXNF", "stationName": "D433" },
-	{ "id": "7cvJ935A5oWAC8T", "operatorID": "NLLG", "stationName": "S441" },
-	{ "id": "b0eB0N1y915Y2xr", "operatorID": "NJO4", "stationName": "C182" },
-	{ "id": "t0F86hB8N142uJT", "operatorID": "NLLG", "stationName": "P244" },
-	{ "id": "1636R51KbWfl44O", "operatorID": "1VYY", "stationName": "G975" },
-	{ "id": "19a95vUI2OFYZUD", "operatorID": "NLLG", "stationName": "W872" },
-	{ "id": "7b18827v0VvY8rl", "operatorID": "1VYY", "stationName": "I597" }
-]
+[{"id": "HyE4997I977l03a", "operatorID": "JNI9", "stationName": "Y634"}, {"id": "P037C7lUvlQdOHg", "operatorID": "1G5N", "stationName": "I950"}, {"id": "07Z9ghqDI7aVmkq", "operatorID": "SXNF", "stationName": "N391"}, {"id": "PX109h36688chjX", "operatorID": "NJO4", "stationName": "H235"}, {"id": "5044R1pQh7Y12Gh", "operatorID": "NLLG", "stationName": "O336"}, {"id": "w8712vxf4ZE0x64", "operatorID": "NLLG", "stationName": "U537"}, {"id": "m6UN4b1p4rCIh82", "operatorID": "NJO4", "stationName": "C420"}, {"id": "5150Rk5XW9c0bba", "operatorID": "NJO4", "stationName": "L891"}, {"id": "42r3I135166u067", "operatorID": "NJO4", "stationName": "N404"}, {"id": "p2yA790teM77rJ1", "operatorID": "1G5N", "stationName": "K971"}]

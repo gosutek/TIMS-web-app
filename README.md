@@ -3,21 +3,17 @@
 TIMS was created as a project for the Software Engineering Course of the [National Technical University of Athens](www.ntua.gr) under the 
 [Electrical and Computer Engineering Department](www.ece.ntua.gr). This app serves the purpose of managing the interoperability of toll stations.
 ## Dependencies
-```json
-{
-    "dependencies": {
-        "mysql2": "^2.3.3",
-        "sequelize": "^6.12.5",
-        "body-parser": "^1.19.1",
-        "csv-parser": "^3.0.0",
-        "express": "^4.17.2",
-        "moment": "^2.29.1"
-    },
-    "devDependencies": {
-        "sequelize-cli": "^6.3.0"
-    }
-}
-```
+<p align="center">
+   <a href="https://nodejs.org/en/">
+       <img src="https://img.shields.io/badge/Nodejs-v16.13.2-success" /></a>
+  <a href="https://dev.mysql.com/downloads/mysql/">
+        <img src="https://img.shields.io/badge/MySQL-8.0.25-yellow" /></a>
+  <a href="https://www.npmjs.com/package/sequelize">
+        <img src="https://img.shields.io/badge/Sequelize-6.12.5-orange" /></a>
+  <a href="https://angular.io/">
+        <img src="https://img.shields.io/badge/Angular-10.1.2-blue" /></a>
+  </p>
+  
 ## How to Use
 1. Create database "tims_test"
 2. Install dependencies

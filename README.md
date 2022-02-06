@@ -15,7 +15,7 @@ TIMS was created as a project for the Software Engineering Course of the [Nation
   </p>
   
 ## How to Use
-1. Create database "tims_test"
+1. Create database "tims"
 2. Install dependencies
 ```
 npm run install:dependencies

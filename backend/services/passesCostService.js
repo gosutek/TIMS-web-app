@@ -46,7 +46,7 @@ async function getPassesCostData(op1ID, op2ID, dateFrom, dateTo, dataFormat) {
 					  Vehicles v,
 					  Tags t
 				 WHERE p.StationId = s.id
-				   AND p.VehicleId = v.id
+				   AND p.TagId = t.id
 				   AND t.VehicleId = v.id
 				   AND s.OperatorId = :op1_ID
 				   AND t.OperatorId = :op2_ID

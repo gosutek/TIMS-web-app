@@ -61,7 +61,7 @@ async function getPassesPerStationData(stationId, dateFrom, dateTo, dataFormat) 
 		`SELECT p.id         as passId,
 				p.charge     as charge,
 				p.timestamp  as passTimestamp,
-				p.vehicleId  as vehicleId,
+				v.id         as vehicleId,
 				s.id         as StationId,
 				s.OperatorId as stationOperator,
 				t.OperatorId as tagOperator
@@ -71,7 +71,7 @@ async function getPassesPerStationData(stationId, dateFrom, dateTo, dataFormat) 
 			  Tags t
 		 WHERE p.StationId = :stationID
 		   AND p.StationId = s.id
-		   AND p.VehicleId = v.id
+		   AND p.TagId = t.id
 		   AND t.VehicleId = v.id
 		   AND p.timestamp BETWEEN :dateFrom AND :dateTo
 		 ORDER BY passTimestamp ASC`,
@@ -84,9 +84,11 @@ async function getPassesPerStationData(stationId, dateFrom, dateTo, dataFormat) 
 		}
 	);
 
+	let stationOperator = passesResults.length > 0 ? passesResults[0].stationOperator : null
+
 	const responseObject = new ResponseObject(
 		stationId,
-		passesResults[0].stationOperator,
+		stationOperator,
 		moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
 		dateFromParam,
 		dateToParam,

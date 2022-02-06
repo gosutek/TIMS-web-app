@@ -53,14 +53,14 @@ async function getPassesAnalysisData(op1ID, op2ID, dateFrom, dateTo, dataFormat)
 		`SELECT p.id        as passId,
 				p.charge    as charge,
 				p.timestamp as passTimestamp,
-				p.vehicleId as vehicleId,
+				v.id        as vehicleId,
 				s.id        as StationId
 		 FROM Passes p,
 			  Stations s,
 			  Vehicles v,
 			  Tags t
 		 WHERE p.StationId = s.id
-		   AND p.VehicleId = v.id
+		   AND p.TagId = t.id
 		   AND t.VehicleId = v.id
 		   AND s.OperatorId = :op1_ID
 		   AND t.OperatorId = :op2_ID

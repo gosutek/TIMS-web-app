@@ -51,7 +51,7 @@ async function getChargesByData(opID, dateFrom, dateTo, dataFormat) {
                       Vehicles v,
                       Tags t
                  WHERE p.StationId = s.id
-                   AND p.VehicleId = v.id
+                   AND p.TagId = t.id
                    AND t.VehicleId = v.id
                    AND s.OperatorId = :op_ID
                    AND t.OperatorId != s.OperatorId

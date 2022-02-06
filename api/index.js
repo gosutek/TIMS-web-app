@@ -21,9 +21,11 @@ const passesPerStation = require("./routes/passesPerStationRouter");
 const passesAnalysis = require("./routes/passesAnalysisRouter");
 const passesCost = require("./routes/passesCostRouter");
 const chargesBy = require("./routes/chargesByRouter");
+const settlement = require("./routes/frontend/settlementRouter");
 
 app.use(baseURL + "/admin", adminRouter);
 app.use(baseURL + "/PassesPerStation", passesPerStation);
 app.use(baseURL + "/PassesAnalysis", passesAnalysis);
 app.use(baseURL + "/PassesCost", passesCost);
 app.use(baseURL + "/ChargesBy", chargesBy);
+app.use(baseURL + "/Settlement", settlement);

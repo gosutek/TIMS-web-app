@@ -12,7 +12,7 @@ import {PassesDto} from "../../dto/passes-dto";
 })
 export class SettlementsComponent implements OnInit {
 
-    displayedColumnsPasses: string[] = ['operator', 'station_id', 'tag_id', 'vehicle_id', 'timestamp']
+    displayedColumnsPasses: string[] = ['station_id', 'station_provider', 'tag_id', 'tag_provider', 'pass_type', 'charge', 'timestamp']
 
     passesDatasource: MatTableDataSource<PassesDto>
 
@@ -37,14 +37,14 @@ export class SettlementsComponent implements OnInit {
     }
 
     updateTable() {
-        this.baseService.getPasses(this.selectedOperatorA, this.selectedOperatorB, this.selectedTimeRange).subscribe(
-            response => {
-                console.log(response)
-                // this.venueUsageDatasource = new MatTableDataSource(JSON.parse(JSON.stringify(response)))
-                // this.venueUsageDatasource.sort = this.sort;
-                // this.venueUsageDatasource.paginator = this.paginator
-            }
-        )
+        // this.baseService.getPasses(this.selectedOperatorA, this.selectedOperatorB, this.selectedTimeRange).subscribe(
+        //     response => {
+        //         console.log(response)
+        //         // this.venueUsageDatasource = new MatTableDataSource(JSON.parse(JSON.stringify(response)))
+        //         // this.venueUsageDatasource.sort = this.sort;
+        //         // this.venueUsageDatasource.paginator = this.paginator
+        //     }
+        // )
     }
 
     onFilterChanges() {

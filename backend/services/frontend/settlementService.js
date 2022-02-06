@@ -108,7 +108,6 @@ async function getSettlementData(op1ID, op2ID, dateFrom, dateTo) {
 
     let responseObject;
 
-    console.log(amountOwned)
     if (amountOwned.length == 0) {
         responseObject = new ResponseObject(
             op1ID,

@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {MatTableDataSource} from "@angular/material/table";
 import {BaseService} from "../../services/base.service";
 import {VenueUsageDTO} from "../../dto/venue-usage-dto";
+import {PassesDto} from "../../dto/passes-dto";
 
 @Component({
     selector: 'app-settlement',
@@ -11,9 +12,9 @@ import {VenueUsageDTO} from "../../dto/venue-usage-dto";
 })
 export class SettlementsComponent implements OnInit {
 
-    displayedColumnsPasses: string[] = ['venue_id', 'venue_name', 'venue_floor', 'number_of_visits']
+    displayedColumnsPasses: string[] = ['operator', 'station_id', 'tag_id', 'vehicle_id', 'timestamp']
 
-    passesDatasource: MatTableDataSource<VenueUsageDTO>
+    passesDatasource: MatTableDataSource<PassesDto>
 
     //Filtered Variables
     selectedOperatorA = ""

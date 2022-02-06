@@ -1,6 +1,7 @@
-export class PassesDtp {
-    venue_id: string;
-    venue_name: string;
-    venue_floor: string;
-    number_of_visits: string;
+export class PassesDto {
+    operator: string;
+    station_id: string;
+    vehicle_id: string;
+    tag_id: string;
+    timestamp: string;
 }

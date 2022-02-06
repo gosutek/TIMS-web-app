@@ -1,1 +1,57 @@
-<p>passes works!</p>
+<div class="card">
+    <div class="card-header">
+        <button mat-button class="header-button">
+            <mat-icon class="button-icon">add</mat-icon>
+            <span class="button-label">Add New Pass</span>
+        </button>
+    </div>
+
+    <div class="card-body">
+        <div class="filter-bar">
+            <form class="filter-bar-form" [formGroup]="passesFormGroup">
+                <mat-form-field>
+                    <input matInput formControlName="stationId" placeholder="Station ID">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName="tagId" placeholder="Tag ID">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName="timestamp" placeholder="Timestamp">
+                </mat-form-field>
+            </form>
+        </div>
+
+        <div>
+            <table mat-table matSort [dataSource]="passesDatasource">
+                <ng-container matColumnDef="operator">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Venue ID</th>
+                    <td mat-cell *matCellDef="let row"> {{row.operator}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="station_id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Venue Name</th>
+                    <td mat-cell *matCellDef="let row"> {{row.venue_name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="vehicle_id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Floor</th>
+                    <td mat-cell *matCellDef="let row"> {{row.venue_floor}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tag_id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Floor</th>
+                    <td mat-cell *matCellDef="let row"> {{row.venue_floor}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="timestamp">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Number Of Visits</th>
+                    <td mat-cell *matCellDef="let row"> {{row.number_of_visits}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsPasses"></tr>
+                <tr mat-row class="hoverable-table-row" *matRowDef="let row; columns: displayedColumnsPasses;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[10, 50, 100]" (page)="updateTable()"></mat-paginator>
+        </div>
+
+    </div>

@@ -1,15 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MatTableDataSource} from "@angular/material/table";
+import {PassesDto} from "../../dto/passes-dto";
+import {BaseService} from "../../services/base.service";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
-  selector: 'app-passes',
-  templateUrl: './passes.component.html',
-  styleUrls: ['./passes.component.scss']
+    selector: 'app-passes',
+    templateUrl: './passes.component.html',
+    styleUrls: ['./passes.component.scss']
 })
 export class PassesComponent implements OnInit {
 
-  constructor() { }
+    displayedColumnsPasses: string[] = ['operator', 'station_id', 'tag_id', 'vehicle_id', 'timestamp']
 
-  ngOnInit(): void {
-  }
+    passesDatasource: MatTableDataSource<PassesDto>
+
+    passesFormGroup = new FormGroup({
+        stationId: new FormControl(''),
+        tagId: new FormControl(''),
+        timestamp: new FormControl('')
+    });
+
+    constructor(private baseService: BaseService) {
+
+    }
+
+    ngOnInit(): void {
+    }
+
+    updateTable() {
+    }
+
+    postNewPass() {
+    }
 
 }

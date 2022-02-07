@@ -60,7 +60,7 @@ async function getSettlementData(op1ID, op2ID, dateFrom, dateTo) {
 				s.id         as stationId,
                 t.id         as tagId,
 				s.OperatorId as stationOperator,
-				t.OperatorId as tagOperator
+				t.OperatorId as tagProvider
          FROM Passes p,
               Stations s,
               Vehicles v,

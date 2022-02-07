@@ -2,6 +2,7 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import { AppConstants } from 'src/app/config/app-constants';
+import {PassDto} from "../dto/pass-dto";
 
 @Injectable({
     providedIn: 'root'
@@ -19,12 +20,20 @@ export class BaseService {
 
     }
 
+    getSettlement(op1ID, op2ID, dateFrom, dateTo): Observable<any> {
+        return this.http.get(AppConstants.API_ROOT + '/Settlement/' + op1ID + '/' + op2ID + '/'+ dateFrom + '/'+ dateTo)
+        // return this.http.get(AppConstants.API_ROOT + '/Settlement/' + op1ID + '/' + op2ID + '/20000709/20190709')
+    }
+
     getPasses(operatorA, operatorB, timeRange): Observable<any> {
         let params = "?operator_a=" + operatorA + "&operator_b=" + operatorB + "&time_range=" + timeRange
 
         return this.http.get(AppConstants.API_ROOT + '/url1' + params)
     }
 
+    postNewPass(passDto: PassDto) {
+        return this.http.post(AppConstants.API_ROOT + '/Passes', JSON.stringify(passDto))
+    }
 
     getClients(firstName,lastName,idNo): Observable<any> {
         let params = "?first_name=" + firstName + "&last_name=" + lastName + "&id_no=" + idNo

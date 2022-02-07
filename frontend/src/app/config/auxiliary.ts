@@ -5,6 +5,10 @@ export class Auxiliary {
         return moment(new Date(createdOn)).format('HH:mm, DD MMM YYYY');
     }
 
+    static getFormattedDateForSQL(): string {
+        return moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+    }
+
     static getOperatorName(operatorId: string) {
         switch (operatorId) {
             case 'WV7J': {

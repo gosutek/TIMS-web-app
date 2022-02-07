@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {MatTableDataSource} from "@angular/material/table";
 import {BaseService} from "../../services/base.service";
-import {VenueUsageDTO} from "../../dto/venue-usage-dto";
 import {PassDto} from "../../dto/pass-dto";
 import {SettlementDto} from "../../dto/settlement-dto";
 import {Auxiliary} from "../../config/auxiliary";
@@ -13,18 +12,20 @@ import {Auxiliary} from "../../config/auxiliary";
     styleUrls: ['./settlements.component.scss']
 })
 export class SettlementsComponent implements OnInit {
-    Auxiliary = Auxiliary
     displayedColumnsPasses: string[] = ['station_id', 'station_operator', 'tag_id', 'tag_provider', 'pass_type', 'charge', 'timestamp']
 
     settlementDatasource: MatTableDataSource<PassDto>
     settlementDTO: SettlementDto
 
+    Auxiliary = Auxiliary
+    Math = Math
+
     //Filtered Variables
     selectedOperatorA = ""
     selectedOperatorB = ""
-    selectedTimeRange = "week"
+    selectedTimeRange = ""
 
-    settlementsFiltersFormGroup = new FormGroup({
+    settlementFormGroup = new FormGroup({
         operatorA: new FormControl('WV7J'),
         operatorB: new FormControl('1G5N'),
         // timeRange: new FormControl('week')
@@ -35,12 +36,10 @@ export class SettlementsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // this.onFilterChanges()
-        // this.updateTable()
     }
 
     getSettlement() {
-        this.baseService.getSettlement(this.settlementsFiltersFormGroup.controls["operatorA"].value, this.settlementsFiltersFormGroup.controls["operatorB"].value, '20000709', '20190709').subscribe(
+        this.baseService.getSettlement(this.settlementFormGroup.controls["operatorA"].value, this.settlementFormGroup.controls["operatorB"].value, '19700709', '20500709').subscribe(
             response => {
                 console.log(response)
                 this.settlementDTO = response
@@ -48,22 +47,4 @@ export class SettlementsComponent implements OnInit {
             }
         )
     }
-
-    // onFilterChanges() {
-    //     this.settlementsFiltersFormGroup.valueChanges.subscribe(formValues => {
-    //         if (formValues.age != null) {
-    //             this.selectedOperatorA = formValues.operatorA
-    //         }
-    //
-    //         if (formValues.age != null) {
-    //             this.selectedOperatorB = formValues.operatorB
-    //         }
-    //
-    //         if (formValues.timeRange != null) {
-    //             this.selectedTimeRange = formValues.timeRange
-    //         }
-    //
-    //         this.updateTable();
-    //     })
-    // }
 }

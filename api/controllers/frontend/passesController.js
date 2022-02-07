@@ -40,7 +40,9 @@ module.exports = {
 	postNewPass: async function (req, res) {
 		try {
 			await passesService.postNewPass(req.body)
-			res.end("New Pass Added Successfully")
+
+			res.statusCode = 200
+			res.send(req.body)
 		} catch (err) {
 			res.statusCode = 500;
 			res.json({

@@ -37,7 +37,7 @@ async function getAllPassesData() {
 				s.id         as stationId,
                 t.id         as tagId,
 				s.OperatorId as stationOperator,
-				t.OperatorId as tagOperator
+				t.OperatorId as tagProvider
          FROM Passes p,
               Stations s,
               Vehicles v,
@@ -45,7 +45,8 @@ async function getAllPassesData() {
          WHERE p.StationId = s.id
            AND p.TagId = t.id
            AND t.VehicleId = v.id
-         ORDER BY passTimestamp ASC`,
+         ORDER BY passTimestamp DESC
+         LIMIT 100`,
         {
             replacements: {
             }
@@ -90,10 +91,10 @@ async function postNewPass(requestBody) {
         {
             replacements: {
                 passId: newId,
-                passTimestamp: requestBody.timestamp,
-                charge: requestBody.charge,
-                stationId: requestBody.stationId,
-                tagId: requestBody.tagId
+                passTimestamp: requestBody.TimeStamp,
+                charge: requestBody.Charge,
+                stationId: requestBody.StationID,
+                tagId: requestBody.TagID
             }
         }
     );   console.log(requestBody)

@@ -10,7 +10,7 @@
         <div class="filter-bar">
             <mat-icon class="filter-bar-icon">search</mat-icon>
 
-            <form class="filter-bar-form" [formGroup]="settlementsFiltersFormGroup">
+            <form class="filter-bar-form" [formGroup]="settlementFormGroup">
                 <mat-form-field style="width: 50%;">
                     <mat-label>Operator 1</mat-label>
                     <mat-select formControlName="operatorA">
@@ -48,8 +48,7 @@
 
         <div class="table-title">
             <div *ngIf="settlementDTO != null">
-                {{Auxiliary.getOperatorName(settlementDTO.OwningOperator)}} owns <i>{{settlementDTO.AmountOwned}}€</i>
-                to {{Auxiliary.getOperatorName(settlementDTO.StationOperator)}}
+                {{Auxiliary.getOperatorName(settlementDTO.OwningOperator)}} owns <i>{{Math.round(settlementDTO.AmountOwned* 100) / 100}}€</i> to {{Auxiliary.getOperatorName(settlementDTO.StationOperator)}}
             </div>
         </div>
 

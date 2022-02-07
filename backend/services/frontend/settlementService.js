@@ -71,7 +71,8 @@ async function getSettlementData(op1ID, op2ID, dateFrom, dateTo) {
            AND ((s.OperatorId = :op1_ID AND t.OperatorId = :op2_ID)
              OR (s.OperatorId = :op2_ID AND t.OperatorId = :op1_ID))
            AND p.timestamp BETWEEN :dateFrom AND :dateTo
-         ORDER BY passTimestamp ASC`,
+         ORDER BY passTimestamp DESC
+         LIMIT 100`,
         {
             replacements: {
                 op1_ID: op1ID,

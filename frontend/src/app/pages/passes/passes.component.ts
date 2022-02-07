@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
-import {PassesDto} from "../../dto/passes-dto";
+import {PassDto} from "../../dto/pass-dto";
 import {BaseService} from "../../services/base.service";
 import {FormControl, FormGroup} from "@angular/forms";
 
@@ -13,7 +13,7 @@ export class PassesComponent implements OnInit {
 
     displayedColumnsPasses: string[] = ['operator', 'station_id', 'tag_id', 'vehicle_id', 'timestamp']
 
-    passesDatasource: MatTableDataSource<PassesDto>
+    passesDatasource: MatTableDataSource<PassDto>
 
     passesFormGroup = new FormGroup({
         stationId: new FormControl(''),

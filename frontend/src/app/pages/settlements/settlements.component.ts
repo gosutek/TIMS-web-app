@@ -3,7 +3,9 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {MatTableDataSource} from "@angular/material/table";
 import {BaseService} from "../../services/base.service";
 import {VenueUsageDTO} from "../../dto/venue-usage-dto";
-import {PassesDto} from "../../dto/passes-dto";
+import {PassDto} from "../../dto/pass-dto";
+import {SettlementDto} from "../../dto/settlement-dto";
+import {Auxiliary} from "../../config/auxiliary";
 
 @Component({
     selector: 'app-settlement',
@@ -11,10 +13,11 @@ import {PassesDto} from "../../dto/passes-dto";
     styleUrls: ['./settlements.component.scss']
 })
 export class SettlementsComponent implements OnInit {
+    Auxiliary = Auxiliary
+    displayedColumnsPasses: string[] = ['station_id', 'station_operator', 'tag_id', 'tag_provider', 'pass_type', 'charge', 'timestamp']
 
-    displayedColumnsPasses: string[] = ['station_id', 'station_provider', 'tag_id', 'tag_provider', 'pass_type', 'charge', 'timestamp']
-
-    passesDatasource: MatTableDataSource<PassesDto>
+    settlementDatasource: MatTableDataSource<PassDto>
+    settlementDTO: SettlementDto
 
     //Filtered Variables
     selectedOperatorA = ""
@@ -22,9 +25,9 @@ export class SettlementsComponent implements OnInit {
     selectedTimeRange = "week"
 
     settlementsFiltersFormGroup = new FormGroup({
-        operatorA: new FormControl(''),
-        operatorB: new FormControl(''),
-        timeRange: new FormControl('week')
+        operatorA: new FormControl('WV7J'),
+        operatorB: new FormControl('1G5N'),
+        // timeRange: new FormControl('week')
     });
 
     constructor(private baseService: BaseService) {
@@ -32,36 +35,35 @@ export class SettlementsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.onFilterChanges()
-        this.updateTable()
+        // this.onFilterChanges()
+        // this.updateTable()
     }
 
-    updateTable() {
-        // this.baseService.getPasses(this.selectedOperatorA, this.selectedOperatorB, this.selectedTimeRange).subscribe(
-        //     response => {
-        //         console.log(response)
-        //         // this.venueUsageDatasource = new MatTableDataSource(JSON.parse(JSON.stringify(response)))
-        //         // this.venueUsageDatasource.sort = this.sort;
-        //         // this.venueUsageDatasource.paginator = this.paginator
-        //     }
-        // )
+    getSettlement() {
+        this.baseService.getSettlement(this.settlementsFiltersFormGroup.controls["operatorA"].value, this.settlementsFiltersFormGroup.controls["operatorB"].value, '20000709', '20190709').subscribe(
+            response => {
+                console.log(response)
+                this.settlementDTO = response
+                this.settlementDatasource = new MatTableDataSource<PassDto>(JSON.parse(JSON.stringify(response.PassesList)))
+            }
+        )
     }
 
-    onFilterChanges() {
-        this.settlementsFiltersFormGroup.valueChanges.subscribe(formValues => {
-            if (formValues.age != null) {
-                this.selectedOperatorA = formValues.operatorA
-            }
-
-            if (formValues.age != null) {
-                this.selectedOperatorB = formValues.operatorB
-            }
-
-            if (formValues.timeRange != null) {
-                this.selectedTimeRange = formValues.timeRange
-            }
-
-            this.updateTable();
-        })
-    }
+    // onFilterChanges() {
+    //     this.settlementsFiltersFormGroup.valueChanges.subscribe(formValues => {
+    //         if (formValues.age != null) {
+    //             this.selectedOperatorA = formValues.operatorA
+    //         }
+    //
+    //         if (formValues.age != null) {
+    //             this.selectedOperatorB = formValues.operatorB
+    //         }
+    //
+    //         if (formValues.timeRange != null) {
+    //             this.selectedTimeRange = formValues.timeRange
+    //         }
+    //
+    //         this.updateTable();
+    //     })
+    // }
 }

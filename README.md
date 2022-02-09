@@ -1,7 +1,6 @@
 # Toll Interoperability Management System(TIMS)
 ## Overview
-TIMS was created as a project for the Software Engineering Course of the [National Technical University of Athens](www.ntua.gr) under the 
-[Electrical and Computer Engineering Department](www.ece.ntua.gr). This app serves the purpose of managing the interoperability of toll stations.
+TIMS was created as a project for the Software Engineering Course of [ECE NTUA](www.ece.ntua.gr). This app serves the purpose of managing the interoperability of toll stations.
 ## Dependencies
 <p align="center">
    <a href="https://nodejs.org/en/">

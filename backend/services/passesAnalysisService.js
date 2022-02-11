@@ -102,8 +102,10 @@ async function getPassesAnalysisData(op1ID, op2ID, dateFrom, dateTo, dataFormat)
 		);
 	});
 
-	console.log(responseObject)
 	if (dataFormat == "csv") {
+		if (responseObject.PassesList.length == 0) {
+			return ""
+		}
 		let constantValues = JSON.parse(JSON.stringify(responseObject))
 		delete constantValues.PassesList
 		let objectForCsv = responseObject.PassesList.map(passEntry => {

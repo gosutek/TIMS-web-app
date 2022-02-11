@@ -116,6 +116,9 @@ async function getPassesPerStationData(stationId, dateFrom, dateTo, dataFormat) 
 	});
 
 	if (dataFormat == "csv") {
+		if (responseObject.PassesList.length == 0) {
+			return ""
+		}
 		let constantValues = JSON.parse(JSON.stringify(responseObject))
 		delete constantValues.PassesList
 		let objectForCsv = responseObject.PassesList.map(passEntry => {

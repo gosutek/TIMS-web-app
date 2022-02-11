@@ -7,7 +7,7 @@ module.exports = {
 			let passesPerStationData = await getPassesPerStationData(req.params.stationID, req.params.date_from, req.params.date_to, req.query.format)
 
 			if (req.query.format == "csv") {
-				if (passesPerStationData.length == 0) {
+				if (passesPerStationData == "") {
 					res.statusCode = 402;
 					res.json({status: "No Data Found"});
 					return;

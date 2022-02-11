@@ -1,37 +1,37 @@
 [
 	{
 		"id": "SXNF",
-		"operatorName": "Aegean Motorway",
+		"operatorName": "aodos",
 		"iban": "GR4001061656445377653524954"
 	},
 	{
 		"id": "NJO4",
-		"operatorName": "Nea Odos",
+		"operatorName": "gefyra",
 		"iban": "GR4001117546458185546132592"
 	},
 	{
 		"id": "1G5N",
-		"operatorName": "Egnatia Odos",
+		"operatorName": "egnatia",
 		"iban": "GR8501769819712186422528741"
 	},
 	{
 		"id": "JNI9",
-		"operatorName": "Kendriki Odos",
+		"operatorName": "kentriki odos",
 		"iban": "GR1701081323228746391281469"
 	},
 	{
 		"id": "WV7J",
-		"operatorName": "Attiki Odos",
+		"operatorName": "moreas",
 		"iban": "GR2901156325429496621317653"
 	},
 	{
 		"id": "NLLG",
-		"operatorName": "Moreas",
+		"operatorName": "nea odos",
 		"iban": "GR3201784557872874282317665"
 	},
 	{
 		"id": "1VYY",
-		"operatorName": "Olympia Odos",
+		"operatorName": "olympia odos",
 		"iban": "GR3701772522328791884718979"
 	}
 ]

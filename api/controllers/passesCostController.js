@@ -4,13 +4,13 @@ const InvalidDate = require("../../backend/error/invalidDate");
 module.exports = {
 	getPassesCost: async function (req, res) {
 		try {
-			let passesCostData = await getPassesCostData(req.params.op1_ID, req.params.op2_ID, req.params.date_from, req.params.date_to, req.params.format)
+			let passesCostData = await getPassesCostData(req.params.op1_ID, req.params.op2_ID, req.params.date_from, req.params.date_to, req.query.format)
 
-			if (passesCostData == null) {
-				res.statusCode = 402;
-				res.json({status: "No Data Found"});
-				return;
-			}
+			// if (passesCostData == null) {
+			// 	res.statusCode = 402;
+			// 	res.json({status: "No Data Found"});
+			// 	return;
+			// }
 
 			if (req.query.format == "csv") {
 				res.setHeader("content-type", "text/csv");

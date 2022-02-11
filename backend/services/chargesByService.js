@@ -83,7 +83,12 @@ async function getChargesByData(opID, dateFrom, dateTo, dataFormat) {
 	});
 
 	if (dataFormat == "csv") {
-		return object2csv(responseObject.PPOList)
+		let constantValues = JSON.parse(JSON.stringify(responseObject))
+		delete constantValues.PPOList
+		let objectForCsv = responseObject.PPOList.map(passEntry => {
+			return {...constantValues, ...passEntry}
+		})
+		return object2csv(objectForCsv)
 	} else {
 		return JSON.stringify(responseObject)
 	}

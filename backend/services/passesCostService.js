@@ -78,7 +78,7 @@ async function getPassesCostData(op1ID, op2ID, dateFrom, dateTo, dataFormat) {
 	);
 
 	if (dataFormat == "csv") {
-		return object2csv(responseObject.PPOList)
+		return object2csv([responseObject])
 	} else {
 		return JSON.stringify(responseObject)
 	}

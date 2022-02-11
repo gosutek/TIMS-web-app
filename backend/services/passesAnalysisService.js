@@ -109,7 +109,6 @@ async function getPassesAnalysisData(op1ID, op2ID, dateFrom, dateTo, dataFormat)
 		let objectForCsv = responseObject.PassesList.map(passEntry => {
 			return {...constantValues, ...passEntry}
 		})
-		console.log(objectForCsv)
 		return object2csv(objectForCsv)
 	} else {
 		return JSON.stringify(responseObject)

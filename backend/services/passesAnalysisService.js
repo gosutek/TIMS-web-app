@@ -93,7 +93,7 @@ async function getPassesAnalysisData(op1ID, op2ID, dateFrom, dateTo, dataFormat)
 		return new PassEntry(
 			count,
 			pass.passId,
-			pass.stationId,
+			pass.StationId,
 			(pass.passTimestamp = moment(pass.passTimestamp).format(
 				"YYYY-MM-DD HH:mm:ss"
 			)),
@@ -101,8 +101,16 @@ async function getPassesAnalysisData(op1ID, op2ID, dateFrom, dateTo, dataFormat)
 			pass.charge
 		);
 	});
+
+	console.log(responseObject)
 	if (dataFormat == "csv") {
-		return object2csv(responseObject.PPOList)
+		let constantValues = JSON.parse(JSON.stringify(responseObject))
+		delete constantValues.PassesList
+		let objectForCsv = responseObject.PassesList.map(passEntry => {
+			return {...constantValues, ...passEntry}
+		})
+		console.log(objectForCsv)
+		return object2csv(objectForCsv)
 	} else {
 		return JSON.stringify(responseObject)
 	}

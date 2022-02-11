@@ -4,17 +4,21 @@ const InvalidDate = require("../../backend/error/invalidDate");
 module.exports = {
 	getPassesPerStation: async function (req, res) {
 		try {
-			let passesPerStationData = await getPassesPerStationData(req.params.stationID, req.params.date_from, req.params.date_to, req.params.format)
-
-			if (JSON.parse(passesPerStationData).PassesList.length == 0) {
-				res.statusCode = 402;
-				res.json({status: "No Data Found"});
-				return;
-			}
+			let passesPerStationData = await getPassesPerStationData(req.params.stationID, req.params.date_from, req.params.date_to, req.query.format)
 
 			if (req.query.format == "csv") {
+				if (passesPerStationData.length == 0) {
+					res.statusCode = 402;
+					res.json({status: "No Data Found"});
+					return;
+				}
 				res.setHeader("content-type", "text/csv");
 			} else {
+				if (JSON.parse(passesPerStationData).PassesList.length == 0) {
+					res.statusCode = 402;
+					res.json({status: "No Data Found"});
+					return;
+				}
 				res.setHeader("content-type", "application/json");
 			}
 

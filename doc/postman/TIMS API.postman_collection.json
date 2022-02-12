@@ -1,0 +1,558 @@
+{
+	"info": {
+		"_postman_id": "b760a7bd-b7c9-492f-b3c1-c4379206d9ec",
+		"name": "TIMS API",
+		"description": "The **Tims REST API** helps manage the interoperability of toll stations\n\n* * *\n\n# Admin Endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Healthcheck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const jsonResponse = pm.response.json()",
+							"pm.test(\"Test response format\", () => {",
+							"    pm.expect(jsonResponse).to.be.an(\"object\")",
+							"});",
+							"const dbInfo = jsonResponse.dbconnection",
+							"pm.test(\"Validate database info\", () => {",
+							"    pm.expect(dbInfo).to.have.all.keys(\"username\", \"password\", \"database_name\", \"dialect\");",
+							"    pm.expect(dbInfo.database_name).to.eql(\"tims\")",
+							"    pm.expect(dbInfo.dialect).to.eql(\"mysql\")",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/admin/healthcheck",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"admin",
+						"healthcheck"
+					]
+				},
+				"description": "Validate end-to-end connectivity between user and database."
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Database",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Correct json response\", function () {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an(\"object\")",
+							"    pm.expect(jsonData.status).to.eql(\"OK\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/admin/resetdatabase",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"admin",
+						"resetdatabase"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Passes Per Station",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonResponse = pm.response.json();",
+							"const env = pm.environment.name",
+							"console.log(env)",
+							"if (env === \"OK\") {",
+							"    pm.test(\"Status code is 200\", function () {",
+							"        pm.response.to.have.status(200);",
+							"    });",
+							"    pm.test(\"Test response keys and type for valid request\", () => {",
+							"        pm.expect(jsonResponse).to.be.an(\"object\");",
+							"        pm.expect(jsonResponse).to.have.all.keys(\"Station\", \"StationOperator\", \"RequestTimestamp\", \"PeriodFrom\", \"PeriodTo\", \"NumberOfPasses\", \"PassesList\")",
+							"        pm.expect(jsonResponse.Station).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.StationOperator).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.RequestTimestamp).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.PeriodFrom).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.PeriodTo).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.NumberOfPasses).to.be.a(\"number\")",
+							"        pm.expect(jsonResponse.PassesList).to.be.an(\"array\")",
+							"    });",
+							"    pm.test(\"Test PassesList keys and type for valid request\", () => {",
+							"        jsonResponse.PassesList.forEach((passesListObj) => {",
+							"            pm.expect(passesListObj).to.be.an(\"object\")",
+							"            pm.expect(passesListObj).to.have.all.keys(\"PassIndex\", \"PassID\", \"PassTimeStamp\", \"VehicleID\", \"TagProvider\", \"PassType\", \"PassCharge\")",
+							"            pm.expect(passesListObj.PassIndex).to.be.a(\"number\")",
+							"            pm.expect(passesListObj.PassID).to.be.a(\"string\")",
+							"            pm.expect(passesListObj.PassTimeStamp).to.be.a(\"string\")",
+							"            pm.expect(passesListObj.VehicleID).to.be.a(\"string\")",
+							"            pm.expect(passesListObj.TagProvider).to.be.a(\"string\")",
+							"            pm.expect(passesListObj.PassType).to.be.a(\"string\")",
+							"            pm.expect(passesListObj.PassCharge).to.be.a(\"number\")",
+							"            })",
+							"    });   ",
+							"} else if (env === \"BAD REQUEST\") {",
+							"    pm.test(\"Status code is 400\", () => {",
+							"        pm.response.to.have.status(400);",
+							"    });",
+							"    pm.test(\"Test response for invalid request\", () => {",
+							"        pm.expect(jsonResponse).to.have.all.keys(\"Error\", \"ErrorType\", \"Code\", \"Info\")",
+							"    });",
+							"} else {",
+							"    pm.test(\"Status code is 402\", () => {",
+							"        pm.response.to.have.status(402);",
+							"    });",
+							"    pm.test(\"Test response for no data found\", () => {",
+							"        pm.expect(jsonResponse).to.have.key(\"status\")",
+							"        pm.expect(jsonResponse.status).to.eql(\"No Data Found\")",
+							"    });",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/PassesPerStation/{{stationID}}/{{date_from}}/{{date_to}}?format=json",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"PassesPerStation",
+						"{{stationID}}",
+						"{{date_from}}",
+						"{{date_to}}"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json"
+						},
+						{
+							"key": "format",
+							"value": "csv",
+							"disabled": true
+						}
+					]
+				},
+				"description": "List of passes for specific toll station and date.\n\n###### Response Format\n\n| **Field** | **Type** | **Description** |\n| --- | --- | --- |\n| Station | String | Unique ID of the toll station |\n| StationOperator | String | Operator of the toll station |\n| RequestTimestamp | String | Date/Time of the request |\n| PeriodFrom | String | Requested period (from) |\n| PeriodTo | String | Requested period (to) |\n| NumberOfPasses | Integer | The number of passes at the specified period |\n| PassesList: | List | A list where its elements = NumberOfPasses |\n| \\->PassIndex | Integer | Pass Entry # |\n| \\->PassID | String | Unique ID of Pass |\n| \\->PassTimestamp | String | The timestamp of the pass |\n| \\->VehicleID | String | Unique ID of the Vehicle |\n| \\->TagProvider | String | Provider of the vehicle's electronic passage tag |\n| \\->PassType | String | \"home\": The tag belongs to the station provider  <br>\"visitor\": The tag does **not** belong to the station provider |\n| \\->PassCharge | Float | The cost of passage in euros |"
+			},
+			"response": []
+		},
+		{
+			"name": "Passes Analysis",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonResponse = pm.response.json();",
+							"const env = pm.environment.name",
+							"if (env === \"OK\") {",
+							"    pm.test(\"Status code is 200\", function () {",
+							"        pm.response.to.have.status(200);",
+							"    });",
+							"",
+							"    pm.test(\"Test response keys and type\", () => {",
+							"        pm.expect(jsonResponse).to.be.an(\"object\");",
+							"        pm.expect(jsonResponse).to.have.all.keys(\"op1_ID\", \"op2_ID\", \"RequestTimestamp\", \"PeriodFrom\", \"PeriodTo\", \"NumberOfPasses\", \"PassesList\")",
+							"        pm.expect(jsonResponse.op1_ID).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.op2_ID).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.RequestTimestamp).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.PeriodFrom).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.PeriodTo).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.NumberOfPasses).to.be.a(\"number\")",
+							"        pm.expect(jsonResponse.PassesList).to.be.an(\"array\")",
+							"    });",
+							"",
+							"    pm.test(\"Test PassesList keys and type\", () => {",
+							"        jsonResponse.PassesList.forEach((passesListObj) => {",
+							"            pm.expect(passesListObj).to.be.an(\"object\")",
+							"            pm.expect(passesListObj).to.have.all.keys(\"PassIndex\", \"PassID\", \"StationID\", \"TimeStamp\", \"VehicleID\", \"Charge\")",
+							"            pm.expect(passesListObj.PassIndex).to.be.a(\"number\")",
+							"            pm.expect(passesListObj.PassID).to.be.a(\"string\")",
+							"            pm.expect(passesListObj.StationID).to.be.a(\"string\")",
+							"            pm.expect(passesListObj.TimeStamp).to.be.a(\"string\")",
+							"            pm.expect(passesListObj.VehicleID).to.be.a(\"string\")",
+							"            pm.expect(passesListObj.Charge).to.be.a(\"number\")",
+							"            })",
+							"    });",
+							"} else if (env === \"BAD REQUEST\") {",
+							"    pm.test(\"Status code is 400\", () => {",
+							"        pm.response.to.have.status(400);",
+							"    });",
+							"    pm.test(\"Test response for invalid request\", () => {",
+							"        pm.expect(jsonResponse).to.have.all.keys(\"Error\", \"ErrorType\", \"Code\", \"Info\")",
+							"    });",
+							"} else {",
+							"    pm.test(\"Status code is 402\", () => {",
+							"        pm.response.to.have.status(402);",
+							"    });",
+							"    pm.test(\"Test response for no data found\", () => {",
+							"        pm.expect(jsonResponse).to.have.key(\"status\")",
+							"        pm.expect(jsonResponse.status).to.eql(\"No Data Found\")",
+							"    });",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseURL}}/PassesAnalysis/:op1_ID/:op2_ID/:date_from/:date_to?format=json",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"PassesAnalysis",
+						":op1_ID",
+						":op2_ID",
+						":date_from",
+						":date_to"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json"
+						},
+						{
+							"key": "format",
+							"value": "csv",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "op1_ID",
+							"value": "{{op1_ID}}"
+						},
+						{
+							"key": "op2_ID",
+							"value": "{{op2_ID}}"
+						},
+						{
+							"key": "date_from",
+							"value": "{{date_from}}"
+						},
+						{
+							"key": "date_to",
+							"value": "{{date_to}}"
+						}
+					]
+				},
+				"description": "List of passes performed with a tag of **op2_ID** through stations of **op1_ID**.\n\n###### Response Format\n\n| **Field** | **Type** | **Description** |\n| --- | --- | --- |\n| op1_ID | String | Operator of the station. |\n| op2_ID | String | The unique ID of the provider to whom the tag of the vehicle belongs to. |\n| RequestTimestamp | String | Date/Time of the request |\n| PeriodFrom | String | Requested period (from) |\n| PeriodTo | String | Requested period (to) |\n| NumberOfPasses | Integer | The number of passes at the specified period |\n| PassesList: | List | A list where its elements = NumberOfPasses |\n| \\->PassIndex | Integer | Pass Entry # |\n| \\->PassID | String | Unique ID of Pass |\n| \\->StationID | String | Unique ID of the Station |\n| \\->Timestamp | String | Timestamp of the pass |\n| \\->VehicleID | String | Unique ID of the vehicle. |\n| \\->Charge | Float | The cost of passage in euros |"
+			},
+			"response": []
+		},
+		{
+			"name": "Passes Cost",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonResponse = pm.response.json();",
+							"const env = pm.environment.name",
+							"if (env === \"OK\") {",
+							"    pm.test(\"Status code is 200\", function () {",
+							"        pm.response.to.have.status(200);",
+							"    });",
+							"",
+							"    pm.test(\"Test response keys and type\", () => {",
+							"        pm.expect(jsonResponse).to.be.an(\"object\");",
+							"        pm.expect(jsonResponse).to.have.all.keys(\"op1_ID\", \"op2_ID\", \"RequestTimestamp\", \"PeriodFrom\", \"PeriodTo\", \"NumberOfPasses\", \"PassesCost\")",
+							"        pm.expect(jsonResponse.op1_ID).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.op2_ID).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.RequestTimestamp).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.PeriodFrom).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.PeriodTo).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.NumberOfPasses).to.be.a(\"number\")",
+							"        pm.expect(jsonResponse.PassesCost).to.be.a(\"number\")",
+							"    });",
+							"} else if (env === \"BAD REQUEST\") {",
+							"    pm.test(\"Status code is 400\", () => {",
+							"        pm.response.to.have.status(400);",
+							"    });",
+							"    pm.test(\"Test response for invalid request\", () => {",
+							"        pm.expect(jsonResponse).to.have.all.keys(\"Error\", \"ErrorType\", \"Code\", \"Info\")",
+							"    });",
+							"} else {",
+							"    pm.test(\"Status code is 402\", () => {",
+							"            pm.response.to.have.status(402);",
+							"    });",
+							"        pm.test(\"Test response for no data found\", () => {",
+							"            pm.expect(jsonResponse).to.have.key(\"status\")",
+							"            pm.expect(jsonResponse.status).to.eql(\"No Data Found\")",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9103/interoperability/api/PassesCost/:op1_ID/:op2_ID/:date_from/:date_to?format=json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9103",
+					"path": [
+						"interoperability",
+						"api",
+						"PassesCost",
+						":op1_ID",
+						":op2_ID",
+						":date_from",
+						":date_to"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json"
+						},
+						{
+							"key": "format",
+							"value": "csv",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "op1_ID",
+							"value": "{{op1_ID}}"
+						},
+						{
+							"key": "op2_ID",
+							"value": "{{op2_ID}}"
+						},
+						{
+							"key": "date_from",
+							"value": "{{date_from}}"
+						},
+						{
+							"key": "date_to",
+							"value": "{{date_to}}"
+						}
+					]
+				},
+				"description": "Returns the number of passes along with their charge for pass events performed with a tag belonging to **op2_ID** through a station of **op1_ID**.\n\n###### Response Format\n\n| **Field** | **Type** | **Description** |\n| --- | --- | --- |\n| op1_ID | String | Operator of the station. |\n| op2_ID | String | The unique ID of the provider to whom the tag of the vehicle belongs to. |\n| RequestTimestamp | String | Date/Time of the request |\n| PeriodFrom | String | Requested period (from) |\n| PeriodTo | String | Requested period (to) |\n| NumberOfPasses | Integer | The number of passes at the specified period |\n| PassesCost | Float | The cost of passage in euros |"
+			},
+			"response": []
+		},
+		{
+			"name": "Charges By",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonResponse = pm.response.json();",
+							"const env = pm.environment.name",
+							"if (env === \"OK\") {",
+							"    pm.test(\"Status code is 200\", function () {",
+							"        pm.response.to.have.status(200);",
+							"    });",
+							"",
+							"    pm.test(\"Test response keys and type\", () => {",
+							"        pm.expect(jsonResponse).to.be.an(\"object\");",
+							"        pm.expect(jsonResponse).to.have.all.keys(\"op_ID\", \"RequestTimestamp\", \"PeriodFrom\", \"PeriodTo\", \"PPOList\")",
+							"        pm.expect(jsonResponse.op_ID).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.RequestTimestamp).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.PeriodFrom).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.PeriodTo).to.be.a(\"string\")",
+							"        pm.expect(jsonResponse.PPOList).to.be.an(\"array\")",
+							"    });",
+							"",
+							"    pm.test(\"Test PPOList keys and type\", () => {",
+							"        jsonResponse.PPOList.forEach((passesListObj) => {",
+							"            pm.expect(passesListObj).to.be.an(\"object\")",
+							"            pm.expect(passesListObj).to.have.all.keys(\"VisitingOperator\", \"NumberOfPasses\", \"PassesCost\")",
+							"            pm.expect(passesListObj.VisitingOperator).to.be.a(\"string\")",
+							"            pm.expect(passesListObj.NumberOfPasses).to.be.a(\"number\")",
+							"            pm.expect(passesListObj.PassesCost).to.be.a(\"number\")",
+							"            })",
+							"    });",
+							"} else if (env === \"BAD REQUEST\") {",
+							"    pm.test(\"Status code is 400\", () => {",
+							"        pm.response.to.have.status(400);",
+							"    });",
+							"    pm.test(\"Test response for invalid request\", () => {",
+							"        pm.expect(jsonResponse).to.have.all.keys(\"Error\", \"ErrorType\", \"Code\", \"Info\")",
+							"    });",
+							"} else {",
+							"    pm.test(\"Status code is 402\", () => {",
+							"        pm.response.to.have.status(402);",
+							"    });",
+							"    pm.test(\"Test response for no data found\", () => {",
+							"        pm.expect(jsonResponse).to.have.key(\"status\")",
+							"        pm.expect(jsonResponse.status).to.eql(\"No Data Found\")",
+							"    });",
+							"}",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/ChargesBy/:op_ID/:date_from/:date_to?format=json",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"ChargesBy",
+						":op_ID",
+						":date_from",
+						":date_to"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json"
+						},
+						{
+							"key": "format",
+							"value": "csv",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "op_ID",
+							"value": "{{op_ID}}"
+						},
+						{
+							"key": "date_from",
+							"value": "{{date_from}}"
+						},
+						{
+							"key": "date_to",
+							"value": "{{date_to}}"
+						}
+					]
+				},
+				"description": "Returns the number of pass events performed through stations of **op_ID** by vehicles with tags belonging to **every other station operator** along with their charge.\n\n###### Response Format\n\n| **Field** | **Type** | **Description** |\n| --- | --- | --- |\n| op_ID | String | Operator of the station. |\n| RequestTimestamp | String | Date/Time of the request |\n| PeriodFrom | String | Requested period (from) |\n| PeriodTo | String | Requested period (to) |\n| PPOList: | List | Contains as many elements as the number of distinct operators whose tags performed a pass event through op_ID's station. |\n| \\->VisitingOperator | String | Unique ID of the visiting operator |\n| \\->NumberOfPasses | Integer | Number of pass events |\n| \\->PassesCost | Float | Sum of the charges of pass events performed by the visiting operator through op_ID's station |"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"if(data.op_ID != null) {",
+					"    pm.environment.set(\"op_ID\", data.op_ID);",
+					"    pm.environment.set(\"op1_ID\", data.op1_ID);",
+					"    pm.environment.set(\"op2_ID\", data.op2_ID);",
+					"    pm.environment.set(\"stationID\", data.stationID);",
+					"    pm.environment.set(\"date_from\", data.date_from);",
+					"    pm.environment.set(\"date_to\", data.date_to);",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

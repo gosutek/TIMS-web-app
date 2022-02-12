@@ -1,5 +1,6 @@
 const passesService = require("../../../backend/services/frontend/passesService");
-const InvalidDate = require("../../error/invalidDate");
+const {InvalidDate} = require("../../error/errorHandler");
+
 
 module.exports = {
 	getAllPasses: async function (req, res) {

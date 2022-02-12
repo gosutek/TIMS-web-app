@@ -1,3 +1,18 @@
+class InvalidDate extends Error {
+	constructor(msg) {
+		super(msg);
+		this.body = {
+			json: {
+				Error: msg,
+				ErrorType: "BAD REQUEST",
+				Code: "400",
+				Info: "Date must be of format YYYYMMDD"
+			},
+			code: 400
+		};
+	}
+}
+
 class MissingParams {
 	constructor(route) {
         let info = "Unrecognized route"
@@ -27,4 +42,20 @@ class MissingParams {
 	}
 }
 
-module.exports = MissingParams;
+class SameOperator extends Error {
+	constructor(msg) {
+		super(msg);
+		this.body = {
+			json: {
+				Error: msg,
+				ErrorType: "BAD REQUEST",
+				Code: "400",
+				Info: "op1_ID cannot be the same as op2_ID"
+			},
+			code: 400
+		};
+	}
+}
+
+
+module.exports = {InvalidDate, MissingParams, SameOperator};

@@ -2,9 +2,32 @@ const express = require("express");
 const router = express.Router();
 const moment = require("moment");
 
-const InvalidDate = require("../error/invalidDate");
+const {InvalidDate, MissingParams} = require("../error/errorHandler");
+
 
 const passesPerStationController = require("../controllers/passesPerStationController");
+
+router.get(
+	[
+		"/",
+        "//",
+        "///",
+		"/:stationID",
+		"/:stationID//",
+		"/:stationID/:date_from",
+        "/:stationID/:date_from//",
+		"/:stationID//:date_to",
+		"//:date_from/:date_to"
+	],
+	(req, res) => {
+		const missing_params_err = new MissingParams("passesPerStation");
+		console.log(
+			"Error -> Missing parameters for passesPerStation endpoint \n URL: /:op_ID/:date_from/:date_to"
+		);
+		res.statusCode = missing_params_err.body.code;
+		res.send(missing_params_err.body.json);
+	}
+);
 
 router.get("/:stationID/:date_from/:date_to", (req, res) => {
 	try {

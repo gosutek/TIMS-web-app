@@ -1,23 +1,28 @@
 const getPassesCostData = require("../../backend/services/passesCostService");
-const InvalidDate = require("../error/invalidDate");
+const { InvalidDate } = require("../error/errorHandler");
 
 module.exports = {
 	getPassesCost: async function (req, res) {
 		try {
-			let passesCostData = await getPassesCostData(req.params.op1_ID, req.params.op2_ID, req.params.date_from, req.params.date_to, req.query.format)
-
+			let passesCostData = await getPassesCostData(
+				req.params.op1_ID,
+				req.params.op2_ID,
+				req.params.date_from,
+				req.params.date_to,
+				req.query.format
+			);
 
 			if (req.query.format == "csv") {
-				if (passesCostData == "") {
+				if (JSON.parse(passesCostData).PassesCost == null) {
 					res.statusCode = 402;
-					res.json({status: "No Data Found"});
+					res.json({ status: "No Data Found" });
 					return;
 				}
 				res.setHeader("content-type", "text/csv");
 			} else {
-				if (passesCostData == null) {
+				if (JSON.parse(passesCostData).PassesCost == null) {
 					res.statusCode = 402;
-					res.json({status: "No Data Found"});
+					res.json({ status: "No Data Found" });
 					return;
 				}
 				res.setHeader("content-type", "application/json");
@@ -25,23 +30,13 @@ module.exports = {
 
 			res.send(passesCostData);
 		} catch (err) {
-			if (err instanceof InvalidDate) {
-				res.statusCode = err.code;
-				res.json({
-					status: "BAD REQUEST",
-					code: err.code,
-					Reason: err.message,
-					Info: "Date must be of format YYYYMMDD"
-				});
-			} else {
-				res.statusCode = 500;
-				res.json({
-					status: "INTERNAL SERVER ERROR",
-					code: 500,
-					Reason: "Check CLI",
-					Info: "No Info"
-				});
-			}
+			res.statusCode = 500;
+			res.json({
+				status: "INTERNAL SERVER ERROR",
+				code: 500,
+				Reason: "Check CLI",
+				Info: "No Info"
+			});
 			console.log("Error ->" + err.stack);
 		}
 	}

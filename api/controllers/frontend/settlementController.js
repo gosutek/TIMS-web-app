@@ -1,5 +1,6 @@
 const getSettlementData = require("../../../backend/services/frontend/settlementService");
-const InvalidDate = require("../../error/invalidDate");
+const {InvalidDate} = require("../../error/errorHandler");
+
 
 module.exports = {
 	getSettlementData: async function (req, res) {

@@ -1,7 +1,6 @@
 const db = require("../");
 const moment = require("moment");
 const object2csv = require("../utils/object2csv");
-const InvalidDate = require("../error/invalidDate");
 
 function ResponseObject(
 	StationProvider,
@@ -23,20 +22,11 @@ function PPO(VisitingOperator, NumberOfPasses, PassesCost) {
 	this.PassesCost = PassesCost;
 }
 
-
 async function getChargesByData(opID, dateFrom, dateTo, dataFormat) {
-	/*Date From */
-	let dateFromParam = moment(dateFrom, "YYYYMMDD", true);
-	if (!dateFromParam.isValid()) {
-		throw new InvalidDate("Date_from is an invalid date");
-	}
-	dateFromParam = moment(dateFromParam).format("YYYY-MM-DD HH:mm:ss");
-	/*Date To */
-	let dateToParam = moment(dateTo, "YYYYMMDD", true);
-	if (!dateToParam.isValid()) {
-		throw new InvalidDate("Date_to is an invalid date");
-	}
-	dateToParam = moment(dateToParam)
+	let dateFromParam = moment(dateFrom, "YYYYMMDD", true).format(
+		"YYYY-MM-DD HH:mm:ss"
+	);
+	let dateToParam = moment(dateTo, "YYYYMMDD", true)
 		.add(23, "hours")
 		.add(59, "minutes")
 		.add(59, "seconds")
@@ -84,17 +74,17 @@ async function getChargesByData(opID, dateFrom, dateTo, dataFormat) {
 
 	if (dataFormat == "csv") {
 		if (responseObject.PPOList.length == 0) {
-			return ""
+			return "";
 		}
-		let constantValues = JSON.parse(JSON.stringify(responseObject))
-		delete constantValues.PPOList
-		let objectForCsv = responseObject.PPOList.map(passEntry => {
-			return {...constantValues, ...passEntry}
-		})
-		return object2csv(objectForCsv)
+		let constantValues = JSON.parse(JSON.stringify(responseObject));
+		delete constantValues.PPOList;
+		let objectForCsv = responseObject.PPOList.map((passEntry) => {
+			return { ...constantValues, ...passEntry };
+		});
+		return object2csv(objectForCsv);
 	} else {
-		return JSON.stringify(responseObject)
+		return JSON.stringify(responseObject);
 	}
 }
 
-module.exports = getChargesByData
+module.exports = getChargesByData;

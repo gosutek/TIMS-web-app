@@ -1,5 +1,5 @@
 const getPassesCostData = require("../../backend/services/passesCostService");
-const InvalidDate = require("../../backend/error/invalidDate");
+const InvalidDate = require("../error/invalidDate");
 
 module.exports = {
 	getPassesCost: async function (req, res) {

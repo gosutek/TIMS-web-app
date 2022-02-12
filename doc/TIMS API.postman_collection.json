@@ -141,15 +141,15 @@
 					"variable": [
 						{
 							"key": "op1_ID",
-							"value": "aodos"
+							"value": "1G5N"
 						},
 						{
 							"key": "op2_ID",
-							"value": "egnatia"
+							"value": "NLLG"
 						},
 						{
 							"key": "date_from",
-							"value": "20190101"
+							"value": "20080101"
 						},
 						{
 							"key": "date_to",
@@ -196,15 +196,15 @@
 					"variable": [
 						{
 							"key": "op1_ID",
-							"value": "aodos"
+							"value": "1G5N"
 						},
 						{
 							"key": "op2_ID",
-							"value": "egnatia"
+							"value": "NLLG"
 						},
 						{
 							"key": "date_from",
-							"value": "20190101"
+							"value": "20080101"
 						},
 						{
 							"key": "date_to",
@@ -246,7 +246,7 @@
 					"variable": [
 						{
 							"key": "op_ID",
-							"value": "aodos"
+							"value": "NJO4"
 						},
 						{
 							"key": "date_from",
@@ -259,6 +259,36 @@
 					]
 				},
 				"description": "Returns the number of pass events performed through stations of **op_ID** by vehicles with tags belonging to **every other station operator** along with their charge.\n\n###### Response Format\n\n| **Field** | **Type** | **Description** |\n| --- | --- | --- |\n| op_ID | String | Operator of the station. |\n| RequestTimestamp | String | Date/Time of the request |\n| PeriodFrom | String | Requested period (from) |\n| PeriodTo | String | Requested period (to) |\n| PPOList: | List | Contains as many elements as the number of distinct operators whose tags performed a pass event through op_ID's station. |\n| \\->VisitingOperator | String | Unique ID of the visiting operator |\n| \\->NumberOfPasses | Integer | Number of pass events |\n| \\->PassesCost | Float | Sum of the charges of pass events performed by the visiting operator through op_ID's station |"
+			},
+			"response": []
+		},
+		{
+			"name": "Missing Parameters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/ChargesBy",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"ChargesBy"
+					]
+				}
 			},
 			"response": []
 		}

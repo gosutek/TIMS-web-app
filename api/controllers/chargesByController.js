@@ -1,5 +1,6 @@
 const getChargesByData = require("../../backend/services/chargesByService");
-const InvalidDate = require("../../backend/error/invalidDate");
+
+const InvalidDate = require("../error/invalidDate");
 
 module.exports = {
     getChargesBy: async function (req, res) {

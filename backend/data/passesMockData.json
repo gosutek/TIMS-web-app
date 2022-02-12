@@ -1,1 +1,702 @@
-[{"id": "Uv16w2x9z58y58f", "timestamp": "2020-02-03 21:08:32", "charge": 2.87, "stationID": "5044R1pQh7Y12Gh", "tagID": "4Eea7aMu8P5l951"}, {"id": "02tf6uP27rjImY9", "timestamp": "2005-12-25 13:53:18", "charge": 12.97, "stationID": "P037C7lUvlQdOHg", "tagID": "sLi4558YJ7027N7"}, {"id": "o7O7G9z1g93B00M", "timestamp": "2008-12-10 07:20:27", "charge": 7.11, "stationID": "42r3I135166u067", "tagID": "0X3T4D3DuyUS24x"}, {"id": "62t1x2jOAYtmt3E", "timestamp": "2016-09-11 06:40:55", "charge": 12.1, "stationID": "w8712vxf4ZE0x64", "tagID": "sLi4558YJ7027N7"}, {"id": "r75uZh755sqhF95", "timestamp": "2009-04-20 21:55:37", "charge": 19.85, "stationID": "p2yA790teM77rJ1", "tagID": "4Eea7aMu8P5l951"}, {"id": "YHCm09O169qbQ6W", "timestamp": "2011-07-14 05:34:00", "charge": 13.28, "stationID": "42r3I135166u067", "tagID": "10nK3934n65lE1w"}, {"id": "87021GYB6GdN5X8", "timestamp": "2008-05-25 11:24:02", "charge": 8.02, "stationID": "5150Rk5XW9c0bba", "tagID": "qI40o49F5Ky7219"}, {"id": "9Zw304pktP57N9V", "timestamp": "2019-09-22 10:22:32", "charge": 4.99, "stationID": "PX109h36688chjX", "tagID": "onb94j7U5R20Odu"}, {"id": "Q419gV5Z396Dx4n", "timestamp": "2019-06-10 05:08:13", "charge": 16.49, "stationID": "w8712vxf4ZE0x64", "tagID": "3oI07J81E9Z68cJ"}, {"id": "SNI6269N64jAGne", "timestamp": "2018-04-01 13:26:10", "charge": 7.57, "stationID": "42r3I135166u067", "tagID": "4Eea7aMu8P5l951"}]
+[
+	{
+		"id": "38sXN7F6D23d4yl",
+		"timestamp": "2012-05-25 11:11:42",
+		"charge": 5.37,
+		"StationID": "23e5Z8X79533Thl",
+		"TagID": "678yv98454O31CA"
+	},
+	{
+		"id": "29mPpP6U2Q6b376",
+		"timestamp": "2009-12-11 06:41:00",
+		"charge": 11.95,
+		"StationID": "63m0VQm66E309k9",
+		"TagID": "9427z6O05967z90"
+	},
+	{
+		"id": "hA5M328b0K42sPA",
+		"timestamp": "2012-01-21 10:08:32",
+		"charge": 8.84,
+		"StationID": "6Cb4A10rHRXZJ33",
+		"TagID": "20qt702A6c32428"
+	},
+	{
+		"id": "A10t3Z3H69Z8vA4",
+		"timestamp": "2021-11-23 08:02:57",
+		"charge": 13.48,
+		"StationID": "23e5Z8X79533Thl",
+		"TagID": "7bfoJ8Qog9O0ayW"
+	},
+	{
+		"id": "H2nPZULP26eE4Ba",
+		"timestamp": "2011-02-06 17:35:20",
+		"charge": 18.81,
+		"StationID": "IgY024jIlu69h2s",
+		"TagID": "3k0GRk5eksVd7LO"
+	},
+	{
+		"id": "831B7395FB7382U",
+		"timestamp": "2012-06-08 20:18:23",
+		"charge": 6.7,
+		"StationID": "6Cb4A10rHRXZJ33",
+		"TagID": "6I2l30V0ji6N15u"
+	},
+	{
+		"id": "CUn1887N6201540",
+		"timestamp": "2013-01-16 19:31:31",
+		"charge": 8.78,
+		"StationID": "dfO7N8K1k55EUWK",
+		"TagID": "vm103Gaz1S36xX9"
+	},
+	{
+		"id": "KhJ195h53Nx68ZT",
+		"timestamp": "2004-11-27 10:44:27",
+		"charge": 9.09,
+		"StationID": "mB5wEedG44895m2",
+		"TagID": "1f5zm1FX8Qz012d"
+	},
+	{
+		"id": "2OHnF6BIJ657W24",
+		"timestamp": "2011-11-28 21:19:26",
+		"charge": 11.13,
+		"StationID": "63m0VQm66E309k9",
+		"TagID": "645516y38ES9Q32"
+	},
+	{
+		"id": "01seST5b161B26t",
+		"timestamp": "2013-08-27 17:28:44",
+		"charge": 9.99,
+		"StationID": "45927N72fDXj23L",
+		"TagID": "463f551E7ZvBw19"
+	},
+	{
+		"id": "Z2395sG1475V649",
+		"timestamp": "2006-05-02 13:10:40",
+		"charge": 4.88,
+		"StationID": "28ju50Ob9V7cO1q",
+		"TagID": "74yX78T1426858W"
+	},
+	{
+		"id": "6I5xg51839rk1f7",
+		"timestamp": "2001-08-16 15:59:52",
+		"charge": 8.08,
+		"StationID": "uN5i53Xc09zU6I8",
+		"TagID": "QtOvV0x2367HH3Z"
+	},
+	{
+		"id": "40983WviAS3f5g9",
+		"timestamp": "2010-06-03 18:17:22",
+		"charge": 6.82,
+		"StationID": "46rGys2N43uTFj2",
+		"TagID": "V44gT0z602ek3M2"
+	},
+	{
+		"id": "m38M8AB0v1M9i9f",
+		"timestamp": "2003-04-18 12:22:52",
+		"charge": 11.5,
+		"StationID": "23e5Z8X79533Thl",
+		"TagID": "6I2l30V0ji6N15u"
+	},
+	{
+		"id": "ygH1uQ60ya6f0z1",
+		"timestamp": "2021-10-08 02:33:55",
+		"charge": 18.97,
+		"StationID": "bj2K15320PW9444",
+		"TagID": "lpj5o5j1z67739E"
+	},
+	{
+		"id": "U434n2D8Ad58Gvr",
+		"timestamp": "2004-09-20 19:57:38",
+		"charge": 18.56,
+		"StationID": "2zs221cQ148J978",
+		"TagID": "1A6X1bA9GD46rbo"
+	},
+	{
+		"id": "u62n186x3w92N87",
+		"timestamp": "2017-01-04 15:06:47",
+		"charge": 15.07,
+		"StationID": "u2Dr3kX43748317",
+		"TagID": "S473LWgS4hr943R"
+	},
+	{
+		"id": "53nr281FUZG1T78",
+		"timestamp": "2010-12-29 07:13:32",
+		"charge": 3.32,
+		"StationID": "dfO7N8K1k55EUWK",
+		"TagID": "8n19C34Dp60WdSq"
+	},
+	{
+		"id": "I78l0N114hh45rb",
+		"timestamp": "2015-12-20 23:30:43",
+		"charge": 15.53,
+		"StationID": "51X1h5Y0K0I4cj4",
+		"TagID": "Wb69X1l0mPc91Fa"
+	},
+	{
+		"id": "HU657951t7C3940",
+		"timestamp": "2015-11-13 21:16:29",
+		"charge": 15.76,
+		"StationID": "6Cb4A10rHRXZJ33",
+		"TagID": "482U1650407177Y"
+	},
+	{
+		"id": "1z8011756k7372j",
+		"timestamp": "2013-07-21 10:24:38",
+		"charge": 17.42,
+		"StationID": "998plfbpha82h57",
+		"TagID": "C4C16kq58b5eMS7"
+	},
+	{
+		"id": "Ki53O0wF82k03uG",
+		"timestamp": "2008-08-18 23:57:09",
+		"charge": 8.18,
+		"StationID": "998plfbpha82h57",
+		"TagID": "JJ4Iv777xR374KE"
+	},
+	{
+		"id": "s37MknZHA092b39",
+		"timestamp": "2012-05-05 15:45:38",
+		"charge": 19.35,
+		"StationID": "89Syp62n20q6sK1",
+		"TagID": "79G0W1sP17o51An"
+	},
+	{
+		"id": "q8422q6U0225b3j",
+		"timestamp": "2018-05-06 20:04:05",
+		"charge": 5.18,
+		"StationID": "6Cb4A10rHRXZJ33",
+		"TagID": "4CX755MscK3L5Ao"
+	},
+	{
+		"id": "H6z8Ww7u20IxM8J",
+		"timestamp": "2002-02-14 23:18:36",
+		"charge": 11.91,
+		"StationID": "28ju50Ob9V7cO1q",
+		"TagID": "4t75QW7c7405wq2"
+	},
+	{
+		"id": "K4N2Me8D098654f",
+		"timestamp": "2011-11-29 01:47:08",
+		"charge": 14.13,
+		"StationID": "W04xU4u608dI83X",
+		"TagID": "5vFV7f16c462169"
+	},
+	{
+		"id": "Iwh3347G90g3u7l",
+		"timestamp": "2007-01-08 11:36:45",
+		"charge": 15.47,
+		"StationID": "W04xU4u608dI83X",
+		"TagID": "8k0B97Os974T596"
+	},
+	{
+		"id": "l02Tv3Sm5572L27",
+		"timestamp": "2004-12-18 13:52:20",
+		"charge": 17.45,
+		"StationID": "2zs221cQ148J978",
+		"TagID": "2pCd7Q547syM4PC"
+	},
+	{
+		"id": "05go405bV8v50EI",
+		"timestamp": "2003-03-27 03:21:05",
+		"charge": 4.99,
+		"StationID": "45927N72fDXj23L",
+		"TagID": "6q5bn304Q1pws3W"
+	},
+	{
+		"id": "7L98fbM10vS9Gu4",
+		"timestamp": "2013-11-24 11:43:50",
+		"charge": 14.84,
+		"StationID": "7v8034433VCbxV8",
+		"TagID": "9427z6O05967z90"
+	},
+	{
+		"id": "01W1h7183bC9X07",
+		"timestamp": "2002-10-08 09:01:52",
+		"charge": 14.58,
+		"StationID": "a394kX0M5W21916",
+		"TagID": "Xkh1XxDNHwhq024"
+	},
+	{
+		"id": "6t28yfI9159j3Dj",
+		"timestamp": "2009-09-18 00:48:19",
+		"charge": 14.06,
+		"StationID": "23e5Z8X79533Thl",
+		"TagID": "17J4weJ064tB4l9"
+	},
+	{
+		"id": "9KJ8Yah2iT38613",
+		"timestamp": "2002-09-03 06:21:06",
+		"charge": 6.29,
+		"StationID": "dfO7N8K1k55EUWK",
+		"TagID": "A487l60r695PpT6"
+	},
+	{
+		"id": "67FABW43y4C08Hg",
+		"timestamp": "2003-11-03 13:23:35",
+		"charge": 14.54,
+		"StationID": "45927N72fDXj23L",
+		"TagID": "Mt2FXr681X64420"
+	},
+	{
+		"id": "O51845m5kO06nDX",
+		"timestamp": "2009-03-29 17:57:56",
+		"charge": 5.32,
+		"StationID": "u2Dr3kX43748317",
+		"TagID": "4CX755MscK3L5Ao"
+	},
+	{
+		"id": "41Q62a8Ap3xIW70",
+		"timestamp": "2014-04-20 16:19:22",
+		"charge": 2.35,
+		"StationID": "2zs221cQ148J978",
+		"TagID": "1A6X1bA9GD46rbo"
+	},
+	{
+		"id": "03K2Kzo46rd547g",
+		"timestamp": "2005-11-04 00:34:23",
+		"charge": 12.67,
+		"StationID": "28ju50Ob9V7cO1q",
+		"TagID": "1ES2XF29g31I214"
+	},
+	{
+		"id": "a8F4f3JotaXRL73",
+		"timestamp": "2018-11-17 10:58:09",
+		"charge": 14.31,
+		"StationID": "46rGys2N43uTFj2",
+		"TagID": "20qt702A6c32428"
+	},
+	{
+		"id": "z97uwG9395bO1H0",
+		"timestamp": "2002-03-20 09:47:06",
+		"charge": 3.84,
+		"StationID": "63m0VQm66E309k9",
+		"TagID": "2S44t0C3503l8S1"
+	},
+	{
+		"id": "dzM492U2Qwph6S1",
+		"timestamp": "2005-09-02 05:50:54",
+		"charge": 5.84,
+		"StationID": "2zs221cQ148J978",
+		"TagID": "2pCd7Q547syM4PC"
+	},
+	{
+		"id": "19O1i4K2p720ZA6",
+		"timestamp": "2003-03-11 20:25:58",
+		"charge": 5.53,
+		"StationID": "u2Dr3kX43748317",
+		"TagID": "8k0B97Os974T596"
+	},
+	{
+		"id": "v15IbWg67564D62",
+		"timestamp": "2010-10-25 03:22:36",
+		"charge": 12.19,
+		"StationID": "46rGys2N43uTFj2",
+		"TagID": "0h8o7I3552ptono"
+	},
+	{
+		"id": "CPaWdZPVA2xdA68",
+		"timestamp": "2013-02-13 22:49:11",
+		"charge": 7.76,
+		"StationID": "89Syp62n20q6sK1",
+		"TagID": "7KK1KmM2J8R806T"
+	},
+	{
+		"id": "j8xDuEHREH94z31",
+		"timestamp": "2008-09-05 20:16:06",
+		"charge": 6.86,
+		"StationID": "46rGys2N43uTFj2",
+		"TagID": "SjEP7c3B304f682"
+	},
+	{
+		"id": "2355o0sNk49734D",
+		"timestamp": "2015-02-17 05:04:30",
+		"charge": 9.5,
+		"StationID": "46rGys2N43uTFj2",
+		"TagID": "90qA5u167471Bg6"
+	},
+	{
+		"id": "Mj8ODq80MwMR2Xp",
+		"timestamp": "2000-02-25 21:42:14",
+		"charge": 5.73,
+		"StationID": "W04xU4u608dI83X",
+		"TagID": "482U1650407177Y"
+	},
+	{
+		"id": "U9y2942X6Z68D3U",
+		"timestamp": "2004-12-14 07:20:19",
+		"charge": 14.69,
+		"StationID": "u2Dr3kX43748317",
+		"TagID": "kUsG0A16Zc69v9V"
+	},
+	{
+		"id": "w3B935D0u9h3456",
+		"timestamp": "2001-02-04 12:52:11",
+		"charge": 7.61,
+		"StationID": "uN5i53Xc09zU6I8",
+		"TagID": "5498978YT14KafV"
+	},
+	{
+		"id": "3q45ZDssET18GgS",
+		"timestamp": "2004-12-28 13:13:08",
+		"charge": 2.6,
+		"StationID": "45927N72fDXj23L",
+		"TagID": "678yv98454O31CA"
+	},
+	{
+		"id": "857825chI74Rat2",
+		"timestamp": "2007-07-04 16:27:47",
+		"charge": 16.21,
+		"StationID": "dfO7N8K1k55EUWK",
+		"TagID": "2pCd7Q547syM4PC"
+	},
+	{
+		"id": "l78GCt71Nl9t2s7",
+		"timestamp": "2008-08-22 15:38:03",
+		"charge": 13.23,
+		"StationID": "28ju50Ob9V7cO1q",
+		"TagID": "S473LWgS4hr943R"
+	},
+	{
+		"id": "R13i5757486Vemp",
+		"timestamp": "2007-07-05 11:12:33",
+		"charge": 18.21,
+		"StationID": "IgY024jIlu69h2s",
+		"TagID": "62974k2838361pk"
+	},
+	{
+		"id": "17214WJt2l986SF",
+		"timestamp": "2017-10-22 13:05:53",
+		"charge": 10.42,
+		"StationID": "46rGys2N43uTFj2",
+		"TagID": "6q5bn304Q1pws3W"
+	},
+	{
+		"id": "081e571847328c9",
+		"timestamp": "2020-11-10 23:08:37",
+		"charge": 12.73,
+		"StationID": "2zs221cQ148J978",
+		"TagID": "c9PBV8tE84oSQKf"
+	},
+	{
+		"id": "p8E2r1I39y5724H",
+		"timestamp": "2004-12-16 06:37:51",
+		"charge": 11.1,
+		"StationID": "u2Dr3kX43748317",
+		"TagID": "H6VSY37r5TD9Xsn"
+	},
+	{
+		"id": "1a5462QE1lDyZAC",
+		"timestamp": "2003-12-29 00:34:50",
+		"charge": 2.77,
+		"StationID": "a394kX0M5W21916",
+		"TagID": "8n19C34Dp60WdSq"
+	},
+	{
+		"id": "8071Xq9w164X474",
+		"timestamp": "2006-04-06 13:21:05",
+		"charge": 9.33,
+		"StationID": "IgY024jIlu69h2s",
+		"TagID": "64LH54NgX4806u3"
+	},
+	{
+		"id": "8Fp14K479f4Zh9D",
+		"timestamp": "2021-03-26 22:51:24",
+		"charge": 14.83,
+		"StationID": "51X1h5Y0K0I4cj4",
+		"TagID": "kUsG0A16Zc69v9V"
+	},
+	{
+		"id": "J3o863I0189KMBx",
+		"timestamp": "2006-09-08 08:41:16",
+		"charge": 11.69,
+		"StationID": "28ju50Ob9V7cO1q",
+		"TagID": "6q5bn304Q1pws3W"
+	},
+	{
+		"id": "07V461iM8888n99",
+		"timestamp": "2011-01-08 10:11:18",
+		"charge": 15.04,
+		"StationID": "998plfbpha82h57",
+		"TagID": "9427z6O05967z90"
+	},
+	{
+		"id": "Cy21i42xpTK977u",
+		"timestamp": "2015-04-15 17:18:36",
+		"charge": 15.99,
+		"StationID": "u2Dr3kX43748317",
+		"TagID": "33zk0IMa8Gvf3Pz"
+	},
+	{
+		"id": "xx8N0UM6wYxS13v",
+		"timestamp": "2019-11-04 05:11:39",
+		"charge": 6.63,
+		"StationID": "W04xU4u608dI83X",
+		"TagID": "qQY29URXG043725"
+	},
+	{
+		"id": "dI1Y5P01J7VYn30",
+		"timestamp": "2020-03-05 16:12:02",
+		"charge": 11.03,
+		"StationID": "u2Dr3kX43748317",
+		"TagID": "1f5zm1FX8Qz012d"
+	},
+	{
+		"id": "Rz1Q71985H21yd0",
+		"timestamp": "2001-09-29 12:16:12",
+		"charge": 18.12,
+		"StationID": "28ju50Ob9V7cO1q",
+		"TagID": "Uu0692S62nL0r18"
+	},
+	{
+		"id": "t83Q0okz49Fxe8J",
+		"timestamp": "2018-06-01 21:10:48",
+		"charge": 18.84,
+		"StationID": "P3d593360Zl2W6u",
+		"TagID": "1e947kr2Z4YSP89"
+	},
+	{
+		"id": "06900q04Q2c1045",
+		"timestamp": "2009-10-27 05:38:09",
+		"charge": 13.45,
+		"StationID": "6Cb4A10rHRXZJ33",
+		"TagID": "733sHDNG29220Je"
+	},
+	{
+		"id": "xaN9B4f34Ip7B81",
+		"timestamp": "2012-05-28 07:22:50",
+		"charge": 14.83,
+		"StationID": "6Cb4A10rHRXZJ33",
+		"TagID": "401806950936o18"
+	},
+	{
+		"id": "x5i89Vg7I1yAxlv",
+		"timestamp": "2007-04-03 16:27:17",
+		"charge": 15.1,
+		"StationID": "998plfbpha82h57",
+		"TagID": "H41W304idoG8S65"
+	},
+	{
+		"id": "8U23t12482Q9UX7",
+		"timestamp": "2018-07-09 01:49:42",
+		"charge": 12.98,
+		"StationID": "u2Dr3kX43748317",
+		"TagID": "5vFV7f16c462169"
+	},
+	{
+		"id": "60Qo252eb5j3U83",
+		"timestamp": "2007-11-22 15:46:50",
+		"charge": 12.63,
+		"StationID": "a394kX0M5W21916",
+		"TagID": "H41W304idoG8S65"
+	},
+	{
+		"id": "Nn05PG4gAuOJjH3",
+		"timestamp": "2007-08-09 09:01:48",
+		"charge": 15.56,
+		"StationID": "63m0VQm66E309k9",
+		"TagID": "lpj5o5j1z67739E"
+	},
+	{
+		"id": "RaNdUlQ3o5y9Y47",
+		"timestamp": "2013-04-08 18:25:50",
+		"charge": 17.51,
+		"StationID": "a394kX0M5W21916",
+		"TagID": "4t75QW7c7405wq2"
+	},
+	{
+		"id": "338ZpylX871k38G",
+		"timestamp": "2013-03-06 10:04:28",
+		"charge": 15.48,
+		"StationID": "23e5Z8X79533Thl",
+		"TagID": "jl9V2917K76P6cA"
+	},
+	{
+		"id": "6J7T41F5qz4q88M",
+		"timestamp": "2020-12-02 21:51:33",
+		"charge": 19.79,
+		"StationID": "uN5i53Xc09zU6I8",
+		"TagID": "I8C6Sqs88GYe4r1"
+	},
+	{
+		"id": "34It47c9K1g28lu",
+		"timestamp": "2005-06-30 10:36:26",
+		"charge": 13.18,
+		"StationID": "u2Dr3kX43748317",
+		"TagID": "750tu677QZvzx34"
+	},
+	{
+		"id": "7D7vL75M38324w5",
+		"timestamp": "2016-10-03 14:59:35",
+		"charge": 15.71,
+		"StationID": "a394kX0M5W21916",
+		"TagID": "42652B410r624e5"
+	},
+	{
+		"id": "ddG2BF2sImI782X",
+		"timestamp": "2018-05-30 08:09:03",
+		"charge": 16.26,
+		"StationID": "6Cb4A10rHRXZJ33",
+		"TagID": "eP79e5Vbefhi6xH"
+	},
+	{
+		"id": "iw0Ur1f5kqbf69H",
+		"timestamp": "2021-10-26 12:24:21",
+		"charge": 5.94,
+		"StationID": "dfO7N8K1k55EUWK",
+		"TagID": "5vFV7f16c462169"
+	},
+	{
+		"id": "658K74DfNipUZ49",
+		"timestamp": "2012-08-15 16:11:39",
+		"charge": 3.35,
+		"StationID": "89Syp62n20q6sK1",
+		"TagID": "4t75QW7c7405wq2"
+	},
+	{
+		"id": "lbT1P47u53sGSHw",
+		"timestamp": "2011-04-19 11:02:53",
+		"charge": 11.13,
+		"StationID": "63m0VQm66E309k9",
+		"TagID": "6q5bn304Q1pws3W"
+	},
+	{
+		"id": "i2638k2F9MK3Sq7",
+		"timestamp": "2004-12-15 08:34:58",
+		"charge": 13.87,
+		"StationID": "bj2K15320PW9444",
+		"TagID": "79G0W1sP17o51An"
+	},
+	{
+		"id": "i8Qg71Qu7oy6496",
+		"timestamp": "2021-01-02 16:15:44",
+		"charge": 14.48,
+		"StationID": "46rGys2N43uTFj2",
+		"TagID": "Uu0692S62nL0r18"
+	},
+	{
+		"id": "y677a289R9B96aO",
+		"timestamp": "2018-08-24 01:12:24",
+		"charge": 2.15,
+		"StationID": "dfO7N8K1k55EUWK",
+		"TagID": "eP79e5Vbefhi6xH"
+	},
+	{
+		"id": "4c10K36pK9244ac",
+		"timestamp": "2016-09-22 07:07:20",
+		"charge": 2.41,
+		"StationID": "6Cb4A10rHRXZJ33",
+		"TagID": "i26x012SAN48Z5D"
+	},
+	{
+		"id": "bx226974w43g35t",
+		"timestamp": "2003-07-30 13:58:15",
+		"charge": 8.15,
+		"StationID": "23e5Z8X79533Thl",
+		"TagID": "20qt702A6c32428"
+	},
+	{
+		"id": "G39a5Q49295055u",
+		"timestamp": "2008-07-29 03:48:03",
+		"charge": 15.39,
+		"StationID": "89Syp62n20q6sK1",
+		"TagID": "4t75QW7c7405wq2"
+	},
+	{
+		"id": "F28fhR140e5BCuf",
+		"timestamp": "2003-12-04 17:41:09",
+		"charge": 12.9,
+		"StationID": "W04xU4u608dI83X",
+		"TagID": "90qA5u167471Bg6"
+	},
+	{
+		"id": "3a0llPh1L43J02K",
+		"timestamp": "2013-11-03 19:45:41",
+		"charge": 2.52,
+		"StationID": "W04xU4u608dI83X",
+		"TagID": "W3ystGvnHZ5sUf2"
+	},
+	{
+		"id": "iJyTadO8qB83377",
+		"timestamp": "2008-10-30 07:37:09",
+		"charge": 5.7,
+		"StationID": "28ju50Ob9V7cO1q",
+		"TagID": "aae0a0qwW59851f"
+	},
+	{
+		"id": "090c48025qoui69",
+		"timestamp": "2011-05-16 22:16:53",
+		"charge": 10.31,
+		"StationID": "23e5Z8X79533Thl",
+		"TagID": "TuV621955Ny5B08"
+	},
+	{
+		"id": "JIxcXXE82c9I0VJ",
+		"timestamp": "2004-02-29 01:17:15",
+		"charge": 19.27,
+		"StationID": "45927N72fDXj23L",
+		"TagID": "8n19C34Dp60WdSq"
+	},
+	{
+		"id": "pwq4h1s8c4kqxXJ",
+		"timestamp": "2009-04-03 08:11:28",
+		"charge": 4.46,
+		"StationID": "uN5i53Xc09zU6I8",
+		"TagID": "q06Q0wjl3G6Ux89"
+	},
+	{
+		"id": "0eGkj3us81O38UB",
+		"timestamp": "2016-11-29 17:59:06",
+		"charge": 4.31,
+		"StationID": "IgY024jIlu69h2s",
+		"TagID": "i26x012SAN48Z5D"
+	},
+	{
+		"id": "4Y6426s5Xri1K5u",
+		"timestamp": "2013-06-18 10:08:45",
+		"charge": 10.91,
+		"StationID": "P3d593360Zl2W6u",
+		"TagID": "3t764d6a567S28T"
+	},
+	{
+		"id": "TjV5Z15u867955V",
+		"timestamp": "2012-06-26 16:59:13",
+		"charge": 19.91,
+		"StationID": "7v8034433VCbxV8",
+		"TagID": "62974k2838361pk"
+	},
+	{
+		"id": "Mg6G0B0Q9M26w05",
+		"timestamp": "2017-05-08 22:59:10",
+		"charge": 10.72,
+		"StationID": "uN5i53Xc09zU6I8",
+		"TagID": "1e947kr2Z4YSP89"
+	},
+	{
+		"id": "s0w7214jof913v2",
+		"timestamp": "2016-02-24 21:33:55",
+		"charge": 12.51,
+		"StationID": "45927N72fDXj23L",
+		"TagID": "6q5bn304Q1pws3W"
+	},
+	{
+		"id": "9U715ZS640QZM36",
+		"timestamp": "2017-12-17 01:01:33",
+		"charge": 15.67,
+		"StationID": "IgY024jIlu69h2s",
+		"TagID": "3t764d6a567S28T"
+	},
+	{
+		"id": "f52jzmw40V1w682",
+		"timestamp": "2015-06-15 04:16:46",
+		"charge": 2.18,
+		"StationID": "mB5wEedG44895m2",
+		"TagID": "6q5bn304Q1pws3W"
+	},
+	{
+		"id": "0645JV362654n2C",
+		"timestamp": "2012-04-30 17:39:45",
+		"charge": 10.01,
+		"StationID": "23e5Z8X79533Thl",
+		"TagID": "56cZ0SbV15364nD"
+	}
+]

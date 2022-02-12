@@ -1,7 +1,6 @@
 const db = require("../../");
 const moment = require("moment");
 const object2csv = require("../../utils/object2csv");
-const InvalidDate = require("../../error/invalidDate");
 
 function ResponseObject(
     PassesList

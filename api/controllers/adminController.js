@@ -1,4 +1,4 @@
-const admin = require("../../backend/api/adminFunctions");
+const admin = require("../../backend/services/adminFunctions");
 
 module.exports = {
 	checkDatabaseConnection: (req, res) => {

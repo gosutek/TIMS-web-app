@@ -1,5 +1,5 @@
 const getPassesAnalysisData = require("../../backend/services/passesAnalysisService");
-const InvalidDate = require("../../backend/error/invalidDate");
+const InvalidDate = require("../error/invalidDate");
 
 module.exports = {
 	getPassesAnalysis: async function (req, res) {

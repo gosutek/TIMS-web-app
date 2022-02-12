@@ -2,9 +2,10 @@ import json
 import random
 import string
 
-DATA_SIZE = 10
+DATA_SIZE = 100
 ID_SIZE = 15
 STATION_NAME_SIZE = 10
+STATION_SIZE = 20
 
 license_countries = ["EL", "BE", "BG", "CZ", "DK", "DE", "EE", "IE", "ES", "FR", "HR", "IT", "CY", "LV", "SE"]
 vehicle_types = ["Bicycle", "Motorcycle", "Car", "Light truck", "Bus", "Heavy Truck", ]
@@ -14,7 +15,7 @@ station_ids, vehicles_ids = [], []
 years = [i for i in range(2000, 2022)] #timespan 2000-2022
 box = [string.ascii_letters, string.digits]
 
-stations = [dict() for _ in range(DATA_SIZE)]
+stations = [dict() for _ in range(STATION_SIZE)]
 passes = [dict() for _ in range(DATA_SIZE)]
 tags = [dict() for _ in range(DATA_SIZE)]
 vehicles = [dict() for _ in range(DATA_SIZE)]
@@ -44,34 +45,6 @@ def generate_license():
     return random.choice(string.ascii_uppercase) + random.choice(string.ascii_uppercase) + random.choice(string.ascii_uppercase) + "-"\
         + random.choice(string.digits) + random.choice(string.digits) + random.choice(string.digits)
 
-def generate_passes():
-    for i in range(DATA_SIZE):
-        id = generate_id()
-        timestamp = generate_timestamp()
-        charge = round(random.uniform(2, 20), 2)
-        passes[i]["id"] = id
-        passes[i]["timestamp"] = timestamp
-        passes[i]["charge"] = charge
-        passes[i]["stationID"] = random.choice(station_ids)
-        passes[i]["tagID"] = random.choice(tags)["id"]
-
-def generate_tags():
-    for i in range(DATA_SIZE):
-        id = generate_id()
-        credits = round(random.uniform(0, 69), 2)
-        tags[i]["id"] = id
-        tags[i]["credits"] = credits
-        tags[i]["operatorID"] = random.choice(op_ids)
-        tags[i]["vehicleID"] = random.choice(vehicles)["id"]
-
-def generate_stations():
-    for i in range(DATA_SIZE):
-        id = generate_id()
-        station_ids.append(id)
-        stations[i]["id"] = id
-        stations[i]["operatorID"] = random.choice(op_ids)
-        stations[i]["stationName"] = random.choice(string.ascii_uppercase) + str(random.randint(100, 999))
-
 def generate_vehicles():
     for i in range(DATA_SIZE):
         id = generate_id()
@@ -81,6 +54,35 @@ def generate_vehicles():
         vehicles[i]["licensePlate"] = generate_license()
         vehicles[i]["licenseCountry"] = random.choice(license_countries)
         vehicles[i]["vehicleType"] = random.choice(vehicle_types)
+
+def generate_tags():
+    for i in range(DATA_SIZE):
+        id = generate_id()
+        credits = round(random.uniform(0, 69), 2)
+        tags[i]["id"] = id
+        tags[i]["credits"] = credits
+        tags[i]["OperatorID"] = random.choice(op_ids)
+        tags[i]["VehicleID"] = random.choice(vehicles)["id"]
+
+def generate_stations():
+    for i in range(STATION_SIZE):
+        id = generate_id()
+        station_ids.append(id)
+        stations[i]["id"] = id
+        stations[i]["OperatorID"] = random.choice(op_ids)
+        stations[i]["StationName"] = random.choice(string.ascii_uppercase) + str(random.randint(100, 999))
+
+
+def generate_passes():
+    for i in range(DATA_SIZE):
+        id = generate_id()
+        timestamp = generate_timestamp()
+        charge = round(random.uniform(2, 20), 2)
+        passes[i]["id"] = id
+        passes[i]["timestamp"] = timestamp
+        passes[i]["charge"] = charge
+        passes[i]["StationID"] = random.choice(station_ids)
+        passes[i]["TagID"] = random.choice(tags)["id"]
 
 generate_vehicles()
 output = open("./vehiclesMockData.json", 'w')

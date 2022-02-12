@@ -1,7 +1,6 @@
 const db = require("../../");
 const moment = require("moment");
 const object2csv = require("../../utils/object2csv");
-const InvalidDate = require("../../error/invalidDate");
 
 function ResponseObject(
     OwningOperator,
@@ -35,22 +34,12 @@ function PassEntry(
 
 
 async function getSettlementData(op1ID, op2ID, dateFrom, dateTo) {
-    /*Date From */
-    let dateFromParam = moment(dateFrom, "YYYYMMDD", true);
-    if (!dateFromParam.isValid()) {
-        throw new InvalidDate("Date_from is an invalid date");
-    }
-    dateFromParam = moment(dateFromParam).format("YYYY-MM-DD HH:mm:ss");
-    /*Date To */
-    let dateToParam = moment(dateTo, "YYYYMMDD", true);
-    if (!dateToParam.isValid()) {
-        throw new InvalidDate("Date_to is an invalid date");
-    }
-    dateToParam = moment(dateToParam)
-        .add(23, "hours")
-        .add(59, "minutes")
-        .add(59, "seconds")
-        .format("YYYY-MM-DD HH:mm:ss");
+    let dateFromParam = moment(dateFrom, "YYYYMMDD", true).format("YYYY-MM-DD HH:mm:ss");
+
+    let dateToParam = moment(dateTo, "YYYYMMDD", true).add(23, "hours")
+    .add(59, "minutes")
+    .add(59, "seconds")
+    .format("YYYY-MM-DD HH:mm:ss");
 
     const [passesResults, passesResultsMetadata] = await db.query(
         `SELECT p.id         as passId,

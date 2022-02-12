@@ -1,7 +1,6 @@
 const db = require("../");
 const moment = require("moment");
 const object2csv = require("../utils/object2csv");
-const InvalidDate = require("../error/invalidDate");
 
 function ResponseObject(
 	Station,
@@ -39,19 +38,17 @@ function PassEntry(
 	this.PassCharge = PassCharge;
 }
 
-async function getPassesPerStationData(stationId, dateFrom, dateTo, dataFormat) {
-	/*Date From */
-	let dateFromParam = moment(dateFrom, "YYYYMMDD", true);
-	if (!dateFromParam.isValid()) {
-		throw new InvalidDate("Date_from is an invalid date");
-	}
-	dateFromParam = moment(dateFromParam).format("YYYY-MM-DD HH:mm:ss");
-	/*Date To */
-	let dateToParam = moment(dateTo, "YYYYMMDD", true);
-	if (!dateToParam.isValid()) {
-		throw new InvalidDate("Date_to is an invalid date");
-	}
-	dateToParam = moment(dateToParam)
+async function getPassesPerStationData(
+	stationId,
+	dateFrom,
+	dateTo,
+	dataFormat
+) {
+	let dateFromParam = moment(dateFrom, "YYYYMMDD", true).format(
+		"YYYY-MM-DD HH:mm:ss"
+	);
+
+	let dateToParam = moment(dateTo, "YYYYMMDD", true)
 		.add(23, "hours")
 		.add(59, "minutes")
 		.add(59, "seconds")
@@ -84,7 +81,8 @@ async function getPassesPerStationData(stationId, dateFrom, dateTo, dataFormat) 
 		}
 	);
 
-	let stationOperator = passesResults.length > 0 ? passesResults[0].stationOperator : null
+	let stationOperator =
+		passesResults.length > 0 ? passesResults[0].stationOperator : null;
 
 	const responseObject = new ResponseObject(
 		stationId,
@@ -99,9 +97,7 @@ async function getPassesPerStationData(stationId, dateFrom, dateTo, dataFormat) 
 	responseObject.PassesList = passesResults.map((pass) => {
 		count = count + 1;
 		let passType =
-			pass.stationOperator == pass.tagOperator
-				? "home"
-				: "visitor";
+			pass.stationOperator == pass.tagOperator ? "home" : "visitor";
 		return new PassEntry(
 			count,
 			pass.passId,
@@ -117,17 +113,17 @@ async function getPassesPerStationData(stationId, dateFrom, dateTo, dataFormat) 
 
 	if (dataFormat == "csv") {
 		if (responseObject.PassesList.length == 0) {
-			return ""
+			return "";
 		}
-		let constantValues = JSON.parse(JSON.stringify(responseObject))
-		delete constantValues.PassesList
-		let objectForCsv = responseObject.PassesList.map(passEntry => {
-			return {...constantValues, ...passEntry}
-		})
-		return object2csv(objectForCsv)
+		let constantValues = JSON.parse(JSON.stringify(responseObject));
+		delete constantValues.PassesList;
+		let objectForCsv = responseObject.PassesList.map((passEntry) => {
+			return { ...constantValues, ...passEntry };
+		});
+		return object2csv(objectForCsv);
 	} else {
-		return JSON.stringify(responseObject)
+		return JSON.stringify(responseObject);
 	}
 }
 
-module.exports = getPassesPerStationData
+module.exports = getPassesPerStationData;

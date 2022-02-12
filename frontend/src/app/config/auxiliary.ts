@@ -12,25 +12,25 @@ export class Auxiliary {
     static getOperatorName(operatorId: string) {
         switch (operatorId) {
             case 'WV7J': {
-                return 'Attiki Odos';
+                return 'moreas';
             }
             case 'SXNF': {
-                return 'Aegean Motorway';
+                return 'aodos';
             }
             case '1G5N': {
-                return 'Egnatia Odos';
+                return 'egnatia';
             }
             case 'JNI9': {
-                return 'Kendriki Odos';
+                return 'kentriki odos';
             }
             case 'NLLG': {
-                return 'Moreas';
+                return 'nea odos';
             }
             case 'NJO4': {
-                return 'Nea Odos';
+                return 'gefyra';
             }
             case '1VYY': {
-                return 'Olympia Odos';
+                return 'olympia odos';
             }
         }
 

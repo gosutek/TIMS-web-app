@@ -1,7 +1,6 @@
 const db = require("../");
 const moment = require("moment");
 const object2csv = require("../utils/object2csv");
-const InvalidDate = require("../error/invalidDate");
 
 function ResponseObject(
 	StationOperator,
@@ -22,25 +21,18 @@ function ResponseObject(
 }
 
 async function getPassesCostData(op1ID, op2ID, dateFrom, dateTo, dataFormat) {
-	/*Date From */
-	let dateFromParam = moment(dateFrom, "YYYYMMDD", true);
-	if (!dateFromParam.isValid()) {
-		throw new InvalidDate("Date_from is an invalid date");
-	}
-	dateFromParam = moment(dateFromParam).format("YYYY-MM-DD HH:mm:ss");
-	/*Date To */
-	let dateToParam = moment(dateTo, "YYYYMMDD", true);
-	if (!dateToParam.isValid()) {
-		throw new InvalidDate("Date_to is an invalid date");
-	}
-	dateToParam = moment(dateToParam)
+	let dateFromParam = moment(dateFrom, "YYYYMMDD", true).format(
+		"YYYY-MM-DD HH:mm:ss"
+	);
+
+	let dateToParam = moment(dateTo, "YYYYMMDD", true)
 		.add(23, "hours")
 		.add(59, "minutes")
 		.add(59, "seconds")
 		.format("YYYY-MM-DD HH:mm:ss");
 
 	const [passesResults, passesMetadata] = await db.query(
-		`SELECT SUM(p.charge) as totalCost
+		`SELECT SUM(p.charge) as totalCost, COUNT(*) as numberOfPasses
 				 FROM Passes p,
 					  Stations s,
 					  Vehicles v,
@@ -73,15 +65,15 @@ async function getPassesCostData(op1ID, op2ID, dateFrom, dateTo, dataFormat) {
 		moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
 		dateFromParam,
 		dateToParam,
-		passesResults.length,
+		passesResults[0].numberOfPasses,
 		passesResults[0].totalCost
 	);
 
 	if (dataFormat == "csv") {
-		return object2csv([responseObject])
+		return object2csv([responseObject]);
 	} else {
-		return JSON.stringify(responseObject)
+		return JSON.stringify(responseObject);
 	}
 }
 
-module.exports = getPassesCostData
+module.exports = getPassesCostData;

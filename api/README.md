@@ -1,7 +1,4 @@
-# API
-## Overview
-This folder contains the REST API for the TIMS app.
-
+# REST API
 ## Dependencies
 <p align="center">
    <a href="https://www.npmjs.com/package/cors">

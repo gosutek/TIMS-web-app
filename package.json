@@ -1,5 +1,5 @@
 {
-	"name": "tims_test",
+	"name": "tims",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
@@ -7,9 +7,10 @@
 		"doc": "doc"
 	},
 	"scripts": {
-		"start": "npm-run-all --parallel start:server",
+		"start": "npm-run-all --parallel start:app start:frontend",
 		"install:dependencies": "npm install && cd ./backend && npm install && cd ../api && npm install && cd ../frontend && npm install",
-		"start:server": "node api",
+		"start:app": "node api",
+        "start:frontend": "cd ./frontend && npm start",
 		"generate:data": "cd ./backend/data && python3 generateData.py",
 		"generate:data:windows": "cd ./backend/data && python generateData.py"
 	},

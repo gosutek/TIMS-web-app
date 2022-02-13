@@ -3,14 +3,11 @@ const {printTestInfo, assert, pause} = require("./auxiliary")
 const db = require("../backend");
 
 
-function runChargesByTests() {
+async function runChargesByTests() {
     printTestInfo("Running ChargesBy Endpoint Tests")
-    // test01()
-    // test02()
-    // test03()
-    test01()
-    test02()
-
+    await test01()
+    await test02()
+    await test03()
 }
 
 async function test01() {

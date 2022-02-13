@@ -1,3 +1,5 @@
+const initializeDatabase = require("./initializeDatabase");
 const runChargesByServiceTests = require("./chargesByServiceTests");
 
-runChargesByServiceTests()
+initializeDatabase();
+// runChargesByServiceTests()

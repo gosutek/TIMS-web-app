@@ -13,12 +13,11 @@ async function assert(testResult, expectedResult, testMessage) {
 }
 
 async function printTestInfo(testInfo) {
-    pause(500).then(() => { console.log(testInfo); });
+    await pause(200)
+    console.log(testInfo);
 }
 
-function pause(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+const pause = (delay) => new Promise((resolve) => setTimeout(resolve,delay))
 
 function removeRequestTimestamps(json) {
     let jsonObject = JSON.parse(json)

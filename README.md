@@ -15,13 +15,14 @@ TIMS was created as a project for the Software Engineering Course of [ECE NTUA](
   
 ## How to Use
 1. Create database "tims"
-2. Install dependencies
+2. Navigate to project root
+3. Install dependencies
 ```
 npm run install:dependencies
 ```
-3. Start the app
+4. Start the app
 ```
-npm run start:server
+npm start
 ```
 ## Documentation
 [REST API Documentation](https://documenter.getpostman.com/view/19003492/UVXgKwmZ)

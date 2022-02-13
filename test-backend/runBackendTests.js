@@ -1,5 +1,10 @@
-const initializeDatabase = require("./initializeDatabase");
+const {initializeDB, restoreDB} = require("./initializeDatabase");
 const runChargesByServiceTests = require("./chargesByServiceTests");
 
-initializeDatabase();
+async function runTests() {
+    await initializeDB();
+    await restoreDB();
+}
+
+runTests()
 // runChargesByServiceTests()

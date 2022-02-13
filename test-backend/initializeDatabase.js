@@ -2,8 +2,8 @@ const admin = require("../backend/services/adminFunctions");
 const db = require("../backend/");
 const {printTestInfo} = require("./auxiliary");
 
-async function initializeDatabase() {
-    await printTestInfo("Initializing Database")
+async function initializeDB() {
+    await printTestInfo("Initializing Database...")
     await admin.emptyDatabase()
 
     await printTestInfo("Reseting Stations/Vehicles/Passes")
@@ -44,4 +44,16 @@ async function insertPassToDB(id, timestamp, charge, stationId, tagId) {
     )
 }
 
-module.exports = initializeDatabase;
+async function restoreDB() {
+    await printTestInfo("Restoring Database...")
+    await admin.emptyDatabase()
+
+    await printTestInfo("Reseting Stations/Vehicles/Passes")
+    await admin.resetStations()
+    await admin.resetVehicles()
+    await admin.resetPasses()
+
+    await printTestInfo("Tests Finished")
+}
+
+module.exports = {initializeDB,restoreDB}

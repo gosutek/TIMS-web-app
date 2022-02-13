@@ -1,6 +1,4 @@
 # Back-end
-## Overview
-Backend for the TIMS app
 ## Dependencies
 <p align="center">
    <a href="https://www.npmjs.com/package/body-parser">

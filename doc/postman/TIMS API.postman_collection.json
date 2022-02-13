@@ -50,7 +50,7 @@
 			"response": []
 		},
 		{
-			"name": "Reset Database",
+			"name": "Empty Database",
 			"event": [
 				{
 					"listen": "test",
@@ -74,15 +74,164 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "{{baseURL}}/admin/resetdatabase",
+					"raw": "{{baseURL}}/admin/emptydatabase",
 					"host": [
 						"{{baseURL}}"
 					],
 					"path": [
 						"admin",
-						"resetdatabase"
+						"emptydatabase"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Passes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Correct json response\", function () {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an(\"object\")",
+							"    pm.expect(jsonData.status).to.eql(\"OK\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/admin/resetpasses",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"admin",
+						"resetpasses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Stations",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Correct json response\", function () {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an(\"object\")",
+							"    pm.expect(jsonData.status).to.eql(\"OK\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/admin/resetstations",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"admin",
+						"resetstations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Vehicles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Correct json response\", function () {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an(\"object\")",
+							"    pm.expect(jsonData.status).to.eql(\"OK\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/admin/resetvehicles",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"admin",
+						"resetvehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Generated Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Correct json response\", function () {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an(\"object\")",
+							"    pm.expect(jsonData.status).to.eql(\"OK\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/admin/pgenerated",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"admin",
+						"pgenerated"
+					]
+				},
+				"description": "Resets the database to auto generated data"
 			},
 			"response": []
 		},

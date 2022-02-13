@@ -2,36 +2,43 @@
 	{
 		"id": "SXNF",
 		"operatorName": "aodos",
-		"iban": "GR4001061656445377653524954"
+		"iban": "GR4001061656445377653524954",
+        "operatorAbbr": "AO"
 	},
 	{
 		"id": "NJO4",
 		"operatorName": "gefyra",
-		"iban": "GR4001117546458185546132592"
+		"iban": "GR4001117546458185546132592",
+        "operatorAbbr": "GF"
 	},
 	{
 		"id": "1G5N",
 		"operatorName": "egnatia",
-		"iban": "GR8501769819712186422528741"
+		"iban": "GR8501769819712186422528741",
+        "operatorAbbr": "EG"
 	},
 	{
 		"id": "JNI9",
-		"operatorName": "kentriki odos",
-		"iban": "GR1701081323228746391281469"
+		"operatorName": "kentriki_odos",
+		"iban": "GR1701081323228746391281469",
+        "operatorAbbr": "KO"
 	},
 	{
 		"id": "WV7J",
 		"operatorName": "moreas",
-		"iban": "GR2901156325429496621317653"
+		"iban": "GR2901156325429496621317653",
+        "operatorAbbr": "MR"
 	},
 	{
 		"id": "NLLG",
-		"operatorName": "nea odos",
-		"iban": "GR3201784557872874282317665"
+		"operatorName": "nea_odos",
+		"iban": "GR3201784557872874282317665",
+        "operatorAbbr": "NE"
 	},
 	{
 		"id": "1VYY",
-		"operatorName": "olympia odos",
-		"iban": "GR3701772522328791884718979"
+		"operatorName": "olympia_odos",
+		"iban": "GR3701772522328791884718979",
+        "operatorAbbr": "OO"
 	}
 ]

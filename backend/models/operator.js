@@ -13,6 +13,10 @@ const Operator = async (sequelize) => {
             type: DataTypes.STRING(30),
             unique: true
 		},
+        operatorAbbr: {
+            type: DataTypes.STRING(30),
+            unique: true
+        },
         iban: {
             type: DataTypes.STRING(34),
             unique: true

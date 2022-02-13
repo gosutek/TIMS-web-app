@@ -15,8 +15,4 @@ module.exports = {
     },
     dbUdpdate: async function (table, data) {
     },
-    /*For populating */
-    dbInit: async function (table, data) {
-
-    },
 };

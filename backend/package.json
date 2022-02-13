@@ -9,10 +9,11 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"mysql2": "^2.3.3",
-		"sequelize": "^6.12.5",
+		"body-parser": "^1.19.1",
+		"csv-parser": "^3.0.0",
 		"moment": "^2.29.1",
-		"body-parser": "^1.19.1"
+		"mysql2": "^2.3.3",
+		"sequelize": "^6.12.5"
 	},
 	"devDependencies": {
 		"sequelize-cli": "^6.3.0"

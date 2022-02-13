@@ -13,7 +13,7 @@ module.exports = {
 			);
 
 			if (req.query.format == "csv") {
-				if (JSON.parse(passesCostData).PassesCost == null) {
+				if (passesCostData == "") {
 					res.statusCode = 402;
 					res.json({ status: "No Data Found" });
 					return;

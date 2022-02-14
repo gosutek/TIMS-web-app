@@ -6,9 +6,9 @@ async function assert(testResult, expectedResult, testMessage) {
     // console.log(expectedResult)
 
     if (expectedResult == testResult) {
-        await printTestInfo(testMessage + ": SUCCESS")
+        await printTestInfo(testMessage + " ---> SUCCESS")
     } else {
-        await printTestInfo(testMessage + ": FAILED")
+        await printTestInfo(testMessage + " ---> FAILED")
     }
 }
 

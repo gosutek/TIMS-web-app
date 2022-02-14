@@ -1,5 +1,5 @@
-const admin = require("../backend/services/adminFunctions");
-const db = require("../backend/");
+const admin = require("../../backend/services/adminFunctions");
+const db = require("../../backend/server");
 const {printTestInfo} = require("./auxiliary");
 
 async function initializeDB() {

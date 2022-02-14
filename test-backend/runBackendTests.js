@@ -1,8 +1,8 @@
-const {initializeDB, restoreDB} = require("./initializeDatabase");
-const runPassesPerStationTests = require("./passesPerStationTests");
-const runPassesAnalysisTests = require("./passesAnalysisTests");
-const runPassesCostTests = require("./passesCostTests");
-const runChargesByTests = require("./chargesByTests");
+const {initializeDB, restoreDB} = require("./tests/initializeDatabase");
+const runPassesPerStationTests = require("./tests/passesPerStationTests");
+const runPassesAnalysisTests = require("./tests/passesAnalysisTests");
+const runPassesCostTests = require("./tests/passesCostTests");
+const runChargesByTests = require("./tests/chargesByTests");
 
 async function runTests() {
     await initializeDB();

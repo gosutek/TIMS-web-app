@@ -1,4 +1,4 @@
-const getChargesByData = require("../backend/services/chargesByService");
+const getChargesByData = require("../../backend/services/chargesByService");
 const {printTestInfo, assert} = require("./auxiliary")
 
 

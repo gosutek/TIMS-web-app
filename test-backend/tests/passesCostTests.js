@@ -1,4 +1,4 @@
-const getPassesCostData = require("../backend/services/passesCostService");
+const getPassesCostData = require("../../backend/services/passesCostService");
 const {printTestInfo, assert} = require("./auxiliary")
 
 

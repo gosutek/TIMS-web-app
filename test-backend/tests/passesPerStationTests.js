@@ -1,4 +1,4 @@
-const getPassesPerStationData = require("../backend/services/passesPerStationService");
+const getPassesPerStationData = require("../../backend/services/passesPerStationService");
 const {printTestInfo, assert} = require("./auxiliary")
 
 

@@ -3,7 +3,7 @@ const db = require("../backend/");
 const {printTestInfo} = require("./auxiliary");
 
 async function initializeDB() {
-    await printTestInfo("Initializing Database...")
+    await printTestInfo("\n-- Initializing Database... --")
     await admin.emptyDatabase()
 
     await printTestInfo("Reseting Stations/Vehicles/Passes")
@@ -45,7 +45,7 @@ async function insertPassToDB(id, timestamp, charge, stationId, tagId) {
 }
 
 async function restoreDB() {
-    await printTestInfo("Restoring Database...")
+    await printTestInfo("\n-- Restoring Database... --")
     await admin.emptyDatabase()
 
     await printTestInfo("Reseting Stations/Vehicles/Passes")
@@ -53,7 +53,7 @@ async function restoreDB() {
     await admin.resetVehicles()
     await admin.resetPasses()
 
-    await printTestInfo("Tests Finished")
+    await printTestInfo("\n-- Tests Finished --\n")
 }
 
 module.exports = {initializeDB,restoreDB}

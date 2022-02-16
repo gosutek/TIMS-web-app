@@ -30,7 +30,7 @@ export class PassesComponent implements OnInit {
         stationId: new FormControl(),
         tagId: new FormControl(),
         charge: new FormControl(),
-        timestamp: new FormControl(Auxiliary.getFormattedDateForSQL())
+        timestamp: new FormControl(Auxiliary.getFormattedDateTimeForSQL())
     });
 
     constructor(private baseService: BaseService, private changeDetectorRefs: ChangeDetectorRef) {

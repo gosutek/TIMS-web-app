@@ -20,6 +20,8 @@ export class SettlementsComponent implements OnInit {
     Auxiliary = Auxiliary
     Math = Math
 
+    sameOperatorSelected = false
+
     //Filtered Variables
     selectedOperatorA = ""
     selectedOperatorB = ""
@@ -28,7 +30,8 @@ export class SettlementsComponent implements OnInit {
     settlementFormGroup = new FormGroup({
         operatorA: new FormControl('WV7J'),
         operatorB: new FormControl('1G5N'),
-        // timeRange: new FormControl('week')
+        dateFrom: new FormControl(Auxiliary.getFormattedDateForSQL()),
+        dateTo: new FormControl(Auxiliary.getFormattedDateForSQL()),
     });
 
     constructor(private baseService: BaseService) {
@@ -39,7 +42,19 @@ export class SettlementsComponent implements OnInit {
     }
 
     getSettlement() {
-        this.baseService.getSettlement(this.settlementFormGroup.controls["operatorA"].value, this.settlementFormGroup.controls["operatorB"].value, '19700709', '20500709').subscribe(
+        let operatorA = this.settlementFormGroup.controls["operatorA"].value
+        let operatorB = this.settlementFormGroup.controls["operatorB"].value
+        let dateFromParameter = Auxiliary.getFormattedDateForEndpoint(this.settlementFormGroup.controls["dateFrom"].value)
+        let dateToParameter = Auxiliary.getFormattedDateForEndpoint(this.settlementFormGroup.controls["dateTo"].value)
+
+        if (operatorA == operatorB) {
+            this.sameOperatorSelected = true
+            return
+        } else {
+            this.sameOperatorSelected = false
+        }
+
+        this.baseService.getSettlement(operatorA, operatorB, dateFromParameter, dateToParameter).subscribe(
             response => {
                 console.log(response)
                 this.settlementDTO = response

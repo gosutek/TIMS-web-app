@@ -3,12 +3,18 @@ const env = process.env.NODE_ENV || "development";
 const config = require(__dirname + "/config/config.json")[env];
 
 /*Instantiate database obj which will be our DB */
-const db = new Sequelize(config.database, config.username, config.password, {
-	host: config.host,
-	port: config.port,
-	dialect: config.dialect,
-	logging: false
-});
+const db = new Sequelize(
+	config.database,
+	config.username,
+	config.password,
+	{
+		host: config.host,
+
+		port: config.port,
+		dialect: config.dialect,
+		logging: false
+	}
+);
 
 const modelDefinitions = [
 	require("./models/pass"),
@@ -22,7 +28,9 @@ for (const eachModel of modelDefinitions) {
 	eachModel(db);
 }
 /*Perform associations */
-db.models.Operator.hasMany(db.models.Station); //Operators can own many stations (1:N)
+db.models.Operator.hasMany(db.models.Station);
+
+//Operators can own many stations (1:N)
 db.models.Station.belongsTo(db.models.Operator);
 
 db.models.Operator.hasMany(db.models.Tag); //Operators own many tags (1:N)
@@ -40,4 +48,3 @@ db.models.Pass.belongsTo(db.models.Tag);
 db.sync(); // Create tables from models
 
 module.exports = db;
-

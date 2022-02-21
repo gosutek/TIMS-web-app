@@ -3,18 +3,30 @@ const app = express();
 const path = require("path");
 const cors = require("cors");
 const bodyParser = require('body-parser');
+const https = require('https')
+const http = require('http')
+const fs = require('fs');
 
-const PORT = 9103;
+const PORT_HTTP = 9103;
+const PORT_HTTPS = 9443;
+
 const baseURL = "/interoperability/api";
+
+const options = {
+	key: fs.readFileSync('api/tls_certs/client-key.pem'),
+	cert: fs.readFileSync('api/tls_certs/client-cert.pem')
+};
+
+http.createServer(app).listen(PORT_HTTP)
+console.log(`Listening on port ${PORT_HTTP} for http`);
+
+https.createServer(options, app).listen(PORT_HTTPS)
+console.log(`Listening on port ${PORT_HTTPS} for https`);
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.raw());
-
-app.listen(PORT, () => {
-	console.log(`Listening on port ${PORT}`);
-});
 
 app.get(baseURL, (req, res) => {
 	res.sendFile(path.join(__dirname + "/index.html"));

@@ -9,7 +9,6 @@ async function initializeDB() {
     await printTestInfo("Reseting Stations/Vehicles/Passes")
     await admin.resetStations()
     await admin.resetVehicles()
-    await admin.resetPasses()
 
     await printTestInfo("Adding Test Data")
     await addTestData()

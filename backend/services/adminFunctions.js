@@ -41,6 +41,9 @@ module.exports = {
         try {
             await db.queryInterface.dropTable("Passes")
             await db.sync();
+
+            let pDD = (await formatDefault()).pOut
+            await db.queryInterface.bulkInsert("Passes", pDD);
             
             return ({status: "OK"})
         } catch (err) {

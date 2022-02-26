@@ -41,12 +41,18 @@ module.exports = async function formatDefault() {
 			const timestamp = moment(elem.timestamp, "DD/MM/YYYY HH:mm").format(
 				"YYYY-MM-DD HH:mm:ss"
 			);
+            let tID;
+            tagsOutput.forEach((Velem) => {
+                if (Velem.VehicleId == elem.vehicleRef) {
+                    tID = Velem.id;
+                }
+            })
 			passesOutput[index] = {
 				id: elem.passID,
 				timestamp: timestamp,
 				charge: elem.charge,
 				StationId: elem.stationRef,
-				TagId: elem.vehicleRef
+				TagId: tID
 			};
 		});
 	});
